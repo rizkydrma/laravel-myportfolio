@@ -17,6 +17,8 @@ class CategoriesController extends Controller
     {
         $title = 'Category Page';
         $category = Category::paginate(5);
+
+        session(['active' => 'category']);
         return view('admin.category.index',compact('title','category'));
     }
 
@@ -47,7 +49,7 @@ class CategoriesController extends Controller
             'slug' => Str::slug($request->name)
         ]);
 
-        return redirect()->route('category.index')->with('status','Success Add Some Data !');
+        return redirect()->back()->with('status','Success Add Some Data !');
     }
 
     /**
@@ -58,7 +60,8 @@ class CategoriesController extends Controller
      */
     public function show(Category $category)
     {
-        //
+
+
     }
 
     /**
@@ -67,9 +70,10 @@ class CategoriesController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        echo json_encode($category);
     }
 
     /**
@@ -79,9 +83,18 @@ class CategoriesController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request,$id)
     {
-        //
+        $request->validate([
+            'name' => 'required|min:3'
+        ]);
+
+        Category::where('id', $id)
+                ->update([
+                    'name' => $request->name,
+                    'slug' => Str::slug($request->name)
+                ]);
+        return redirect()->back()->with('status', 'Success Update Some Data');
     }
 
     /**
@@ -92,6 +105,41 @@ class CategoriesController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        Category::destroy($category->id);
+        return redirect()->back()->with('status', 'Success Delete Some Data');
+    }
+
+    public function search(Request $request)
+    {
+
+        // $value = $request->search;
+        // $category = Category::where('name','like','%' . $value . '%')->paginate(6);
+        
+        $title = 'Category Page';
+        $category = Category::when($request->search, function($query) use ($request){
+            $query->where('name','LIKE', "%{$request->search}%");
+        })->paginate(6);
+        $category->appends($request->only('search'));
+
+        return view('admin.category.index',compact('title','category'));
+    }
+
+    public function trash()
+    {
+        $title = 'Trashed Category';
+        $category = Category::onlyTrashed()->paginate(6);
+        return view('admin.category.trash', compact('title','category'));
+    }
+
+    public function restore($id)
+    {
+        Category::withTrashed()->where('id', $id)->restore();
+        return redirect()->back()->with('status','Success Restore Some Data');
+    }
+
+    public function kill($id)
+    {
+        Category::withTrashed()->where('id', $id)->forceDelete();
+        return redirect()->back()->with('status','Success Delete Some Data');
     }
 }
