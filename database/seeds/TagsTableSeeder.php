@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class CategoriesTableSeeder extends Seeder
+class TagsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,27 +11,24 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        $category = [
+        $tags = [
             [
                 'name' => 'PHP',
                 'slug' => 'php',
                 'created_at' => '2020-03-25 07:07:34'
-
             ],
             [
                 'name' => 'Javascript',
                 'slug' => 'javascript',
                 'created_at' => '2020-03-25 07:07:34'
-
             ],
             [
-                'name' => 'Phyton',
-                'slug' => 'phyton',
+                'name' => 'React Native',
+                'slug' => 'react-native',
                 'created_at' => '2020-03-25 07:07:34'
-
-            ]
+            ],
         ];
 
-        DB::table('categories')->insert($category);
+        DB::table('tags')->insert($tags);
     }
 }

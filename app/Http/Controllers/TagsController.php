@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
+use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
-class CategoriesController extends Controller
+class TagsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,11 +15,11 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        $title = 'Category Page';
-        $category = Category::paginate(5);
+        $title = 'Tag Page';
+        $tags = Tag::paginate(6);
 
-        session(['active' => 'category']);
-        return view('admin.category.index',compact('title','category'));
+        session(['active' => 'tag']);
+        return view('admin.tag.index',compact('title','tags'));
     }
 
     /**
@@ -44,110 +44,111 @@ class CategoriesController extends Controller
             'name' => 'required|min:3'
         ]);
 
-        Category::create([
+        Tag::create([
             'name' => $request->name,
             'slug' => Str::slug($request->name)
         ]);
 
         return redirect()->back()->with('status','Success Add Some Data !');
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Category  $category
+     * @param  \App\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(Tag $tag)
     {
-
-
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Category  $category
+     * @param  \App\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Tag $tag)
     {
-        $category = Category::findOrFail($id);
-        echo json_encode($category);
+        $tags = Tag::findOrFail($tag->id);
+        echo json_encode($tags);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Category  $category
+     * @param  \App\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(Request $request, Tag $tag)
     {
         $request->validate([
             'name' => 'required|min:3'
         ]);
 
-        Category::where('id', $id)
-                ->update([
-                    'name' => $request->name,
-                    'slug' => Str::slug($request->name)
-                ]);
+        Tag::where('id', $tag->id)
+            ->update([
+                'name' => $request->name,
+                'slug' => Str::slug($request->name)
+            ]);
         return redirect()->back()->with('status', 'Success Update Some Data');
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Category  $category
+     * @param  \App\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(Tag $tag)
     {
-        Category::destroy($category->id);
+        Tag::destroy($tag->id);
         return redirect()->back()->with('status', 'Success Delete Some Data');
     }
 
     public function search(Request $request)
     {
-
-        // $value = $request->search;
-        // $category = Category::where('name','like','%' . $value . '%')->paginate(6);
-        
-        $title = 'Category Page';
-        $category = Category::when($request->search, function($query) use ($request){
+        $title = 'Tag Page';
+        $tags = Tag::when($request->search, function($query) use ($request){
             $query->where('name','LIKE', "%{$request->search}%");
         })->paginate(6);
-        $category->appends($request->only('search'));
+        $tags->appends($request->only('search'));
 
-        return view('admin.category.index',compact('title','category'));
+        return view('admin.tag.index',compact('title','tags'));
     }
 
+    // Method Untuk menampilkan data yang sudah di hapus
     public function trash()
     {
-        $title = 'Trashed Category';
-        $category = Category::onlyTrashed()->paginate(6);
-        return view('admin.category.trash', compact('title','category'));
+        $title = 'Trashed Tag';
+        // Memunculkan data yang sudah di hapus berdasarkan field delete_at
+        $tags = Tag::onlyTrashed()->paginate(6);
+        return view('admin.tag.trash',compact('title','tags'));
     }
 
+    // Method Mengembalikan data yang sudah dihapus
     public function restore($id)
     {
-        Category::withTrashed()->where('id', $id)->restore();
+        // mengembalikan data dan menghapus value dari field delete_at menjadi null
+        Tag::withTrashed()->where('id', $id)->restore();
         return redirect()->back()->with('status','Success Restore Some Data');
     }
 
+    // Method untuk benar-benar menghapus dari database
     public function kill($id)
     {
-        Category::withTrashed()->where('id', $id)->forceDelete();
+        Tag::withTrashed()->where('id', $id)->forceDelete();
         return redirect()->back()->with('status','Success Delete Some Data');
     }
 
+    // Method untuk multiple delete data namun masih tersimpan di trash
     public function deleteAll(Request $request)
     {
-        $id = $request->id;
-        Category::whereIn('id', explode(',',$id))->delete();
+        Tag::whereIn('id', explode(',', $request->id))->delete();
         return redirect()->back()->with('status','Success Delete Multiple Data');
-
     }
 }

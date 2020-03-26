@@ -17,9 +17,14 @@
       @if (session('active') == 'category')
           active
       @endif
-      "><a class="nav-link" href="blank.html"><i class="fas fa-asterisk"></i> <span>Category</span></a>
+    "><a class="nav-link" href="{{ route('category.index') }}"><i class="fas fa-asterisk"></i>
+          <span>Category</span></a>
       </li>
-      <li><a class="nav-link" href="blank.html"><i class="fas fa-gavel"></i> <span>Tag</span></a></li>
+      <li class="
+      @if (session('active') == 'tag')
+          active
+      @endif
+      "><a class="nav-link" href="{{ route('tag.index') }}"><i class="fas fa-gavel"></i> <span>Tag</span></a></li>
     </ul>
 
   </aside>

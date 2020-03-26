@@ -20,18 +20,21 @@
 
 
 <div class="row">
-  <div class="col-lg-3 col-sm-6">
-    <a href="{{ route('category.index') }}" class="btn btn-primary btn-block ml-4">Add Category</a>
+  <div class="col-lg-4 col-sm-6">
+    <a href="{{ route('tag.index') }}" class="btn btn-primary btn-block">
+      <i class="fas fa-plus mx-2"></i>Add Tag</a>
   </div>
-  <div class="col-lg-3 col-sm-6">
-    <a href="{{ route('category.trash') }}" class="btn btn-danger btn-block">Trashed Category</a>
+  <div class="col-lg-4 col-sm-6">
+    <a href="{{ route('tag.trash') }}" class="btn btn-danger btn-block">
+      <i class="fas fa-undo mx-2"></i>Trashed Tag</a>
   </div>
+
 </div>
 <div class="card">
   <div class="card-header">
-    <h4>Category Table</h4>
+    <h4>Tag Table</h4>
     <div class="card-header-form">
-      <form action="{{ route('category.search') }}" method="GET">
+      <form action="{{ route('tag.search') }}" method="GET">
         <div class="input-group">
           <input type="text" class="form-control" placeholder="Search" name="search">
           <div class="input-group-btn">
@@ -57,13 +60,13 @@
           <th>created</th>
           <th>Action</th>
         </tr>
-        @foreach ($category as $item => $data)
+        @foreach ($tags as $item => $data)
         <tr>
           <td class="p-0 text-center">
-            <div class="custom-checkbox custom-control ">
+            <div class="custom-checkbox custom-control">
               <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input sub-check"
-                id="checkbox-{{ $item + $category->firstitem() }}">
-              <label for="checkbox-{{ $item + $category->firstitem() }}" class="custom-control-label">&nbsp;</label>
+                id="checkbox-{{ $item + $tags->firstitem() }}" data-id="{{ $data->id }}">
+              <label for="checkbox-{{ $item + $tags->firstitem() }}" class="custom-control-label">&nbsp;</label>
             </div>
           </td>
           <td>{{ $data->name }}</td>
@@ -72,21 +75,20 @@
           <td>{{ $data->created_at->diffForHumans() }}</td>
           <td>
             <div class="d-inline d-flex">
-              <a href="{{ route('category.restore', $data->id) }}" class="btn btn-info btn-action mr-1"
-                title="Restore"><i class="fas fa-undo"></i></a>
+              <a href="{{ route('tag.restore', $data->id) }}" class="btn btn-info  btn-action mr-1" title="Restore"><i
+                  class="fas fa-undo"></i></a>
 
-              <form action="{{ route('category.kill', $data->id) }}}" method="POST" id="form-{{ $data->id }}">
+              <form action="{{ route('tag.kill', $data->id) }}}" method="POST" id="form-{{ $data->id }}">
                 @csrf
                 @method('delete')
-                <button type="submit" class="btn btn-warning btn-action btn-delete" title="Delete"
+                <button type="submit" class="btn btn-warning btn-action btn-delete" title="Kill"
                   data-id={{ $data->id }}><i class="fas fa-trash"></i></a>
-
               </form>
             </div>
           </td>
         </tr>
         @endforeach
-        @forelse($category as $data)
+        @forelse($tags as $data)
         @empty
         <tr class='text-center'>
           <td colspan="6">Tidak ada data</td>
@@ -94,7 +96,7 @@
         @endforelse
       </table>
       </table>
-      {{ $category->links() }}
+      {{ $tags->links() }}
     </div>
   </div>
 </div>

@@ -21,24 +21,24 @@
 
 <div class="row justify-content-between">
   <div class="col-lg-4 col-sm-6">
-    <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modalCategory">
-      <i class="fas fa-plus mx-2"></i>Add Category</a>
+    <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modalTag">
+      <i class="fas fa-plus mx-2"></i>Add tag</a>
   </div>
   <div class="col-lg-4 col-sm-6">
-    <a href="{{ route('category.trash') }}" class="btn btn-danger btn-block">
-      <i class="fas fa-undo mx-2"></i>Trashed Category</a>
+    <a href="{{ route('tag.trash') }}" class="btn btn-danger btn-block">
+      <i class="fas fa-undo mx-2"></i>Trashed tag</a>
   </div>
   <div class="col-lg-4 col-sm-6">
     <a href="#" class=" btn btn-warning btn-block" id="btn-deleteAll">
       <i class="fas fa-trash mx-2"></i>Delete
-      Multiple Category</a>
+      Multiple tag</a>
   </div>
 </div>
 <div class="card">
   <div class="card-header">
-    <h4>Category Table</h4>
+    <h4>tag Table</h4>
     <div class="card-header-form">
-      <form action="{{ route('category.search') }}" method="GET">
+      <form action="{{ route('tag.search') }}" method="GET">
         <div class="input-group">
           <input type="text" class="form-control" placeholder="Search" name="search">
           <div class="input-group-btn">
@@ -64,13 +64,13 @@
           <th>created</th>
           <th>Action</th>
         </tr>
-        @foreach ($category as $item => $data)
+        @foreach ($tags as $item => $data)
         <tr>
           <td class="p-0 text-center">
             <div class="custom-checkbox custom-control">
               <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input sub-check"
-                id="checkbox-{{ $item + $category->firstitem() }}" data-id="{{ $data->id }}">
-              <label for="checkbox-{{ $item + $category->firstitem() }}" class="custom-control-label">&nbsp;</label>
+                id="checkbox-{{ $item + $tags->firstitem() }}" data-id="{{ $data->id }}">
+              <label for="checkbox-{{ $item + $tags->firstitem() }}" class="custom-control-label">&nbsp;</label>
             </div>
           </td>
           <td>{{ $data->name }}</td>
@@ -79,10 +79,10 @@
           <td>{{ $data->created_at->diffForHumans() }}</td>
           <td>
             <div class="d-inline d-flex">
-              <a class="btn btn-primary btn-action mr-1 show-modal" data-toggle="modal" data-target="#modalCategoryEdit"
-                modal="category" data-id="{{ $data->id }}" title="Edit"><i class="fas fa-pencil-alt"></i></a>
+              <a class="btn btn-primary btn-action mr-1 show-modal" data-toggle="modal" data-target="#modalTagEdit"
+                modal="tag" data-id="{{ $data->id }}" title="Edit"><i class="fas fa-pencil-alt"></i></a>
 
-              <form action="{{ route('category.destroy', $data->id) }}}" method="POST" id="form-{{ $data->id }}">
+              <form action="{{ route('tag.destroy', $data->id) }}}" method="POST" id="form-{{ $data->id }}">
                 @csrf
                 @method('delete')
                 <button type="submit" class="btn btn-danger btn-action btn-delete" title="Delete"
@@ -93,7 +93,7 @@
           </td>
         </tr>
         @endforeach
-        @forelse($category as $data)
+        @forelse($tags as $data)
         @empty
         <tr class='text-center'>
           <td colspan="6">Tidak ada data</td>
@@ -101,7 +101,7 @@
         @endforelse
       </table>
       </table>
-      {{ $category->links() }}
+      {{ $tags->links() }}
     </div>
   </div>
 </div>
@@ -109,22 +109,22 @@
 
 @section('modal')
 <!-- Modal -->
-<div class="modal fade" id="modalCategory" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="modalTag" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add New Category</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Add New tag</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form method="POST" action="{{ route('category.store') }}">
+        <form method="POST" action="{{ route('tag.store') }}">
           @csrf
           <div class="form-group">
-            <label for="name">Category</label>
-            <input type="text" class="form-control" id="name" placeholder="Enter a new category" name="name"
+            <label for="name">tag</label>
+            <input type="text" class="form-control" id="name" placeholder="Enter a new tag" name="name"
               value="{{ old('name') }}">
           </div>
       </div>
@@ -138,12 +138,12 @@
 </div>
 
 <!-- Modal Edit-->
-<div class="modal fade" id="modalCategoryEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="modalTagEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add New Category</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Add New tag</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -152,8 +152,8 @@
         <div class="modal-body edit">
           <div class="bungkus">
             <div class=" form-group">
-              <label for="name">Category</label>
-              <input type="text" class="form-control" placeholder="Enter a new category" name="name">
+              <label for="name">tag</label>
+              <input type="text" class="form-control" placeholder="Enter a new tag" name="name">
             </div>
           </div>
         </div>
