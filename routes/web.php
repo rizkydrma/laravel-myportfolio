@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+Auth::routes();
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -19,10 +21,21 @@ Route::get('/category/deleteAll','CategoriesController@deleteAll')->name('catego
 Route::resource('/category','CategoriesController');
 
 // Route Tags
-
 Route::get('/tag/search','TagsController@search')->name('tag.search');
 Route::get('/tag/trash','TagsController@trash')->name('tag.trash');
 Route::get('/tag/restore/{id}','TagsController@restore')->name('tag.restore');
 Route::delete('/tag/kill/{id}','TagsController@kill')->name('tag.kill');
 Route::get('/tag/deleteAll','TagsController@deleteAll')->name('tag.deleteAll');
 Route::resource('/tag','TagsController');
+
+// Route Post
+Route::get('/post/search','PostsController@search')->name('post.search');
+Route::get('/post/trash','PostsController@trash')->name('post.trash');
+Route::get('/post/restore/{id}','PostsController@restore')->name('post.restore');
+Route::delete('/post/kill/{id},{image}','PostsController@kill')->name('post.kill');
+Route::get('/post/deleteAll','PostsController@deleteAll')->name('post.deleteAll');
+Route::resource('/post','PostsController');
+
+Route::group(['middleware' => 'auth'], function(){
+    
+});

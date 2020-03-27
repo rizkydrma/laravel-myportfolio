@@ -3,20 +3,6 @@
 @section('title', $title)
 
 @section('content')
-@if (session('status'))
-<div class="flashdata" data-flashdata="{{ session('status') }}"></div>
-@else
-@if (count($errors)>0)
-<div class="flashdata" data-flashdata="
-@error('name')
-{{ $message }}
-@enderror
-">
-</div>
-@else
-<div class="flashdata" data-flashdata=""></div>
-@endif
-@endif
 
 
 <div class="row">

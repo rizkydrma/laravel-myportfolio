@@ -45,106 +45,111 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
     // DELTE MULTIPLE
-    const checkAll = document.getElementById('checkbox-all');
-    const checkbox = document.querySelectorAll('.sub-check');
-    checkAll.addEventListener('click', function () {
-        checkbox.forEach(check => (check.checked == true) ? check.checked = false : check.checked = true)
-    })
-    const btnDeleteAll = document.getElementById('btn-deleteAll')
-    btnDeleteAll.addEventListener('click', function () {
-        const id = [];
-        checkbox.forEach(check => {
-            // jika checkbox true push data ke dalam array
-            if (check.checked == true) {
-                id.push(check.dataset.id)
-            }
-        })
-        // cek apakah array tersebut kosong
-        if (id.length <= 0) {
-            alert('Plese select row')
-        } else {
-            const confirmation = confirm('Are you sure to delete this row');
-            // jika confirmasi true
-            if (confirmation) {
-                // gabungkan array agar dapat di proses delete
-                const checkSelected = id.join(',');
+    if (title[0].text.toLowerCase().includes('tag') == true || title[0].text.toLowerCase().includes('category') == true) {
 
-                // cek controller yang akan digunakan
-                if (title[0].text.toLowerCase().includes('tag')) {
-                    let route = 'tag';
-                    // panggil fungsi multiple delete
-                    multipleDelete(route, checkSelected);
-                } else {
-                    let route = 'category';
-                    // panggil fungsi multiple delete
-                    multipleDelete(route, checkSelected);
+
+        const checkAll = document.getElementById('checkbox-all');
+        const checkbox = document.querySelectorAll('.sub-check');
+        checkAll.addEventListener('click', function () {
+            checkbox.forEach(check => (check.checked == true) ? check.checked = false : check.checked = true)
+        })
+        const btnDeleteAll = document.getElementById('btn-deleteAll')
+        btnDeleteAll.addEventListener('click', function () {
+            const id = [];
+            checkbox.forEach(check => {
+                // jika checkbox true push data ke dalam array
+                if (check.checked == true) {
+                    id.push(check.dataset.id)
                 }
+            })
+            // cek apakah array tersebut kosong
+            if (id.length <= 0) {
+                alert('Plese select row')
+            } else {
+                const confirmation = confirm('Are you sure to delete this row');
+                // jika confirmasi true
+                if (confirmation) {
+                    // gabungkan array agar dapat di proses delete
+                    const checkSelected = id.join(',');
 
+                    // cek controller yang akan digunakan
+                    if (title[0].text.toLowerCase().includes('tag')) {
+                        let route = 'tag';
+                        // panggil fungsi multiple delete
+                        multipleDelete(route, checkSelected);
+                    } else {
+                        let route = 'category';
+                        // panggil fungsi multiple delete
+                        multipleDelete(route, checkSelected);
+                    }
+
+                }
             }
-        }
-    })
-})
-
-const showModals = document.querySelectorAll('.show-modal');
-
-// REUSABLE FUNGSI FETCH DATA
-// FETCH DATA SESUAI URL YANG DIBLEMPAR
-if (title[0].text.toLowerCase().includes('tag')) {
-    showModals.forEach(btn => {
-        btn.addEventListener('click', function () {
-            const id = this.dataset.id
-            let url = `http://localhost:8000/tag/${id}/edit`;
-            let route = 'tag';
-            fetchData(url, route)
         })
-    })
-} else {
-    showModals.forEach(btn => {
-        btn.addEventListener('click', function () {
-            const id = this.dataset.id
-            let url = `http://localhost:8000/category/${id}/edit`;
-            let route = 'category';
-            fetchData(url, route)
-        })
-    })
-}
+    }
 
-function fetchData(url, route) {
-    fetch(url)
-        .then(response => response.json())
-        .then(response => {
-            const categoryDetail = showDetailCategory(response)
-            const modalBody = document.querySelector('.bungkus')
-            modalBody.innerHTML = categoryDetail
-            const formAction = document.getElementById('editModal');
-            formAction.action = `/${route}/${response.id}`
-        })
-}
+    const showModals = document.querySelectorAll('.show-modal');
 
-function showDetailCategory(category) {
-    return `
+    // REUSABLE FUNGSI FETCH DATA
+    // FETCH DATA SESUAI URL YANG DIBLEMPAR
+    if (title[0].text.toLowerCase().includes('tag')) {
+        showModals.forEach(btn => {
+            btn.addEventListener('click', function () {
+                const id = this.dataset.id
+                let url = `http://localhost:8000/tag/${id}/edit`;
+                let route = 'tag';
+                fetchData(url, route)
+            })
+        })
+    } else {
+        showModals.forEach(btn => {
+            btn.addEventListener('click', function () {
+                const id = this.dataset.id
+                let url = `http://localhost:8000/category/${id}/edit`;
+                let route = 'category';
+                fetchData(url, route)
+            })
+        })
+    }
+
+    function fetchData(url, route) {
+        fetch(url)
+            .then(response => response.json())
+            .then(response => {
+                const categoryDetail = showDetailCategory(response)
+                const modalBody = document.querySelector('.bungkus')
+                modalBody.innerHTML = categoryDetail
+                const formAction = document.getElementById('editModal');
+                formAction.action = `/${route}/${response.id}`
+            })
+    }
+
+    function showDetailCategory(category) {
+        return `
           <div class="form-group">
             <label for="name">Category</label>
             <input type="text" class="form-control" name="name"
               value="${category.name}">
           </div>
     `
-}
+    }
 
-// Fungsi ajax delete multiple data
-function multipleDelete(route, checkSelected) {
-    $.ajax({
-        url: `/${route}/deleteAll`,
-        method: "get",
-        data: {
-            id: checkSelected
-        },
-        success: function () {
-            // jika sucsess reload halaman
-            window.location.reload()
-        }
-    })
-}
+    // Fungsi ajax delete multiple data
+    function multipleDelete(route, checkSelected) {
+        $.ajax({
+            url: `/${route}/deleteAll`,
+            method: "get",
+            data: {
+                id: checkSelected
+            },
+            success: function () {
+                // jika sucsess reload halaman
+                window.location.reload()
+            }
+        })
+    }
+})
+
 
 
 // EDIT CATEGORY

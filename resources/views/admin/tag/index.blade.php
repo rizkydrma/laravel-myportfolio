@@ -3,22 +3,6 @@
 @section('title', $title)
 
 @section('content')
-@if (session('status'))
-<div class="flashdata" data-flashdata="{{ session('status') }}"></div>
-@else
-@if (count($errors)>0)
-<div class="flashdata" data-flashdata="
-@error('name')
-{{ $message }}
-@enderror
-">
-</div>
-@else
-<div class="flashdata" data-flashdata=""></div>
-@endif
-@endif
-
-
 <div class="row justify-content-between">
   <div class="col-lg-4 col-sm-6">
     <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modalTag">

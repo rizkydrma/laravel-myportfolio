@@ -26,6 +26,7 @@
 <script src="{{ asset('assets/modules/summernote/summernote-bs4.js')}}"></script>
 <script src="{{ asset('assets/modules/chocolat/dist/js/jquery.chocolat.min.js')}}"></script>
 <script src="{{ asset('assets/js/sweet/sweetalert2.all.min.js')}}"></script>
+<script src="{{ asset('assets/modules/select2/dist/js/select2.full.min.js')}}"></script>
 
 <!-- Page Specific JS File -->
 <script src="{{ asset('assets/js/page/index.js')}}"></script>
