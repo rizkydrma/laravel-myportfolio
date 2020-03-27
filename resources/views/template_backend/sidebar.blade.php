@@ -7,9 +7,9 @@
       <a href="index.html">RD</a>
     </div>
     <ul class="sidebar-menu">
-      <li class="menu-header">Starter</li>
+      <li class="menu-header">Dashboard</li>
       <li><a class="nav-link" href="blank.html"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
-      <li class="menu-header">Starter</li>
+      <li class="menu-header">Management Data</li>
       <li class="
         @if (session('active') == 'post')
             active
@@ -29,6 +29,13 @@
           active
       @endif
       "><a class="nav-link" href="{{ route('tag.index') }}"><i class="fas fa-gavel"></i> <span>Tag</span></a></li>
+
+      <li class="menu-header">Management User</li>
+      <li class="
+      @if (session('active') == 'user')
+          active
+      @endif
+      "><a class="nav-link" href="{{ route('user.index') }}"><i class="fas fa-user"></i> <span>User</span></a></li>
     </ul>
 
   </aside>

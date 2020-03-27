@@ -4,7 +4,7 @@
 @section('content')
 
 
-<div class="row justify-content-between">
+<div class="row ">
   <div class="col-lg-4 col-sm-6">
     <a href="{{ route('post.create') }}" class="btn btn-primary btn-block">
       <i class="fas fa-plus mx-2"></i>Add Post</a>
@@ -13,11 +13,7 @@
     <a href="{{ route('post.trash') }}" class="btn btn-danger btn-block">
       <i class="fas fa-undo mx-2"></i>Trashed post</a>
   </div>
-  <div class="col-lg-4 col-sm-6">
-    <a href="#" class=" btn btn-warning btn-block" id="btn-deleteAll">
-      <i class="fas fa-trash mx-2"></i>Delete
-      Multiple Post</a>
-  </div>
+
 </div>
 
 <div class="card">

@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // DELETE CATEGORY
+    // DELETE 
     const btnDeletes = document.querySelectorAll('.btn-delete');
     btnDeletes.forEach(btnDelete => {
         btnDelete.addEventListener('click', function (e) {
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
     // DELTE MULTIPLE
-    if (title[0].text.toLowerCase().includes('tag') == true || title[0].text.toLowerCase().includes('category') == true) {
+    if (title[0].text.toLowerCase().includes('tag') == true || title[0].text.toLowerCase().includes('category') == true || title[0].text.toLowerCase().includes('user') == true) {
 
 
         const checkAll = document.getElementById('checkbox-all');
@@ -77,8 +77,12 @@ document.addEventListener('DOMContentLoaded', () => {
                         let route = 'tag';
                         // panggil fungsi multiple delete
                         multipleDelete(route, checkSelected);
-                    } else {
+                    } else if (title[0].text.toLowerCase().includes('category')) {
                         let route = 'category';
+                        // panggil fungsi multiple delete
+                        multipleDelete(route, checkSelected);
+                    } else if (title[0].text.toLowerCase().includes('user')) {
+                        let route = 'user';
                         // panggil fungsi multiple delete
                         multipleDelete(route, checkSelected);
                     }

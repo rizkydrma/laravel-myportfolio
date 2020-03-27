@@ -14,9 +14,9 @@
       @else
       @if (count($errors)>0)
       <div class="flashdata" data-flashdata="
-      @error('name')
-      {{ $message }}
-      @enderror
+      @foreach ($errors->all() as $error)
+          {{ $error }}
+      @endforeach
       ">
       </div>
       @else

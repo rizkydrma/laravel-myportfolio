@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Post;
 use App\Category;
 use App\Tag;
-
+use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -53,7 +53,7 @@ class PostsController extends Controller
             'title' => 'required|min:3',
             'category_id' => 'required',
             'content' => 'required',
-            'image' => 'required|file|image|mimes:jpeg,png,gif,webp|max:2048'
+            'image' => 'required|file|image|mimes:jpeg,png,gif,webp|max:2048',
         ]);
 
         // simpan data image yang di upload ke variabel image
@@ -69,7 +69,8 @@ class PostsController extends Controller
             'category_id' => $request->category_id,
             'content' => $request->content,
             'image' => $imageName,
-            'slug' => Str::slug($request->title)
+            'slug' => Str::slug($request->title),
+            'user_id' => Auth::id()
         ]);
 
         // simpan data yang berelasi many to many , post_tag
@@ -131,7 +132,8 @@ class PostsController extends Controller
             'title' => $request->title,
             'category_id' => $request->category_id,
             'content' => $request->content,
-            'slug' => Str::slug($request->title)
+            'slug' => Str::slug($request->title),
+            'user_id' => Auth::id()
         ];
         // jika ada image yang di ubah
         if($request->has('image')){

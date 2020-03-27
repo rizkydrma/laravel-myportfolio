@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="row justify-content-between">
+<div class="row">
   <div class="col-lg-4 col-sm-6">
     <a href="{{ route('post.create') }}" class="btn btn-primary btn-block">
       <i class="fas fa-plus mx-2"></i>Add Post</a>
@@ -12,11 +12,6 @@
   <div class="col-lg-4 col-sm-6">
     <a href="{{ route('post.trash') }}" class="btn btn-danger btn-block">
       <i class="fas fa-undo mx-2"></i>Trashed post</a>
-  </div>
-  <div class="col-lg-4 col-sm-6">
-    <a href="#" class=" btn btn-warning btn-block" id="btn-deleteAll">
-      <i class="fas fa-trash mx-2"></i>Delete
-      Multiple Post</a>
   </div>
 </div>
 
@@ -39,27 +34,19 @@
       <table class="table table-striped">
         <tr>
           <th class="text-center">
-            <div class="custom-checkbox custom-control">
-              <input type="checkbox" data-checkboxes="mygroup" data-checkbox-role="dad" class="custom-control-input"
-                id="checkbox-all">
-              <label for="checkbox-all" class="custom-control-label">&nbsp;</label>
-            </div>
+            No
           </th>
           <th>Title</th>
           <th>Category</th>
           <th>Tags</th>
-          <th>Content</th>
+          <th>Creator</th>
           <th>Image</th>
           <th>Action</th>
         </tr>
         @foreach ($posts as $item => $data)
         <tr>
           <td class="p-0 text-center">
-            <div class="custom-checkbox custom-control">
-              <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input sub-check"
-                id="checkbox-{{ $item + $posts->firstitem() }}" data-id="{{ $data->id }}">
-              <label for="checkbox-{{ $item + $posts->firstitem() }}" class="custom-control-label">&nbsp;</label>
-            </div>
+            {{ $item + $posts->firstitem() }}
           </td>
           <td>{{ $data->title }}</td>
           <td>{{ $data->category->name }}</td>
@@ -72,7 +59,7 @@
               @endforeach
             </ul>
           </td>
-          <td>{{ $data->content }}</td>
+          <td>{{ $data->user->name }}</td>
           <td>
             <img src="{{ asset('/data_post/'.$data->image) }}" alt="gambar {{ $data->id }}"
               class="img-fluid img-thumbnail" style="width: 7rem;">
