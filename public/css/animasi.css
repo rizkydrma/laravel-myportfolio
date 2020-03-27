@@ -1,0 +1,79 @@
+.small-circle {
+  position: absolute;
+  width: 33px;
+  height: 33px;
+  background: #007bff;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.small-circle-2 {
+  position: absolute;
+  width: 33px;
+  height: 33px;
+  border: 2px solid #007bff;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.small-circle.circle-1 {
+  top: 50px;
+  right: 106px;
+}
+
+.small-circle.circle-2 {
+  top: 20px;
+  right: 490px;
+}
+
+.small-circle.circle-3 {
+  top: 70px;
+  left: 50px;
+}
+
+.small-circle.circle-4 {
+  top: 400px;
+  left: 120px;
+}
+
+.small-circle.circle-5 {
+  top: 460px;
+  left: 100px;
+}
+
+@keyframes move {
+  from {
+    transform: translateX(-70px) translateY(0);
+  }
+
+  to {
+    transform: translateX(80px) translateY(100px);
+  }
+}
+
+.circle-1,
+.circle-2,
+.circle-3,
+.circle-4,
+.circle-5 {
+  animation-name: move;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-fill-mode: forwards;
+}
+
+@keyframes easeOut {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.fade {
+  animation-name: easeOut;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+}

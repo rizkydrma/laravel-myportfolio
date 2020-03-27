@@ -61,7 +61,7 @@
           </td>
           <td>{{ $data->user->name }}</td>
           <td>
-            <img src="{{ asset('/data_post/'.$data->image) }}" alt="gambar {{ $data->id }}"
+            <img src="{{ asset('/img/post/'.$data->image) }}" alt="gambar {{ $data->id }}"
               class="img-fluid img-thumbnail" style="width: 7rem;">
           </td>
           <td>

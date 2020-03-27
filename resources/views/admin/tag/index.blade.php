@@ -66,7 +66,7 @@
               <a class="btn btn-primary btn-action mr-1 show-modal" data-toggle="modal" data-target="#modalTagEdit"
                 modal="tag" data-id="{{ $data->id }}" title="Edit"><i class="fas fa-pencil-alt"></i></a>
 
-              <form action="{{ route('tag.destroy', $data->id) }}}" method="POST" id="form-{{ $data->id }}">
+              <form action="{{ route('tag.destroy', $data->id) }}" method="POST" id="form-{{ $data->id }}">
                 @csrf
                 @method('delete')
                 <button type="submit" class="btn btn-danger btn-action btn-delete" title="Delete"

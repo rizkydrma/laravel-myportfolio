@@ -1,0 +1,23 @@
+.body-color {
+    background-color: rgb(240, 240, 240) !important;
+}
+
+.text-primary {
+    color: #448cfb !important;
+}
+
+.text-secondary {
+    color: rgb(0, 0, 45) !important;
+}
+
+.turn-off {
+    color: #333 !important;
+}
+
+.bg-card {
+    box-shadow: 4px 10px 10px 2px rgb(225, 225, 225) !important;
+}
+
+.navbar a:hover {
+    color: #007bff !important;
+}

@@ -66,7 +66,7 @@
               <a class="btn btn-primary btn-action mr-1 show-modal" data-toggle="modal" data-target="#modalCategoryEdit"
                 modal="category" data-id="{{ $data->id }}" title="Edit"><i class="fas fa-pencil-alt"></i></a>
 
-              <form action="{{ route('category.destroy', $data->id) }}}" method="POST" id="form-{{ $data->id }}">
+              <form action="{{ route('category.destroy', $data->slug) }}" method="POST" id="form-{{ $data->id }}">
                 @csrf
                 @method('delete')
                 <button type="submit" class="btn btn-danger btn-action btn-delete" title="Delete"

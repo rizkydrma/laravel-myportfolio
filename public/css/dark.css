@@ -1,0 +1,36 @@
+/* CONFIG WARNA */
+.body-color {
+  background-color: #333 !important;
+}
+.text-primary {
+  color: #448cfb !important;
+}
+
+.text-secondary {
+  color: rgb(255, 255, 255) !important;
+}
+
+.turn-off {
+  color: #333 !important;
+}
+
+.bg-card {
+  background-color: #444 !important;
+  box-shadow: 4px 10px 10px 2px #222 !important;
+}
+
+.page-link {
+  font-weight: bold;
+  background-color: #444 !important;
+  box-shadow: 4px 10px 10px 2px #222 !important;
+  border: 0;
+}
+
+.shadow-img {
+  box-shadow: 4px 10px 10px 2px #222 !important;
+}
+
+.navbar a:hover {
+  color: #007bff !important;
+}
+/* CONFIG WARNA */

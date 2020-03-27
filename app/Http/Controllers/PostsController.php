@@ -61,7 +61,7 @@ class PostsController extends Controller
         $imageName = time()."_".$image->getClientOriginalName();
         
         // path tujuan file/image akan di simpan 
-        $path = 'data_post';
+        $path = 'img/post';
 
         // simpan data post ke database
         $post = Post::create([
@@ -125,7 +125,7 @@ class PostsController extends Controller
         // simpan data image yang di upload ke variabel image
         $image = $request->file('image');
         // deklarasi path tujuan upload
-        $path = 'data_post';
+        $path = 'img/post';
 
         // deklarasi data yang akan diubah
         $postData = [

@@ -3,9 +3,17 @@
 use Illuminate\Support\Facades\Route;
 
 Auth::routes();
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'BlogsController@index')->name('blog');
+
+// Route BLOG
+Route::get('/blog/cari', 'BlogsController@search')->name('blog.search');
+Route::get('/blog', 'BlogsController@blog')->name('blog.blog');
+Route::get('/blog/{slug}', 'BlogsController@blog_detail')->name('blog.detail');
+Route::get('/list-category/{category}', 'BlogsController@list_category')->name('blog.category');
+
+
+Route::get('/source-code', 'SourcesController@index')->name('source-code');
+Route::get('/video-tutorial', 'BlogsController@tutorial')->name('blog.tutorial');
 
 Route::group(['middleware' => 'auth'], function(){
     Route::get('/home', 'HomeController@index')->name('home');
