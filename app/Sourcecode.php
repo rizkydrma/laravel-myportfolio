@@ -5,22 +5,24 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Post extends Model
+class Sourcecode extends Model
 {
     use SoftDeletes;
-    protected  $fillable = ['title','category_id','content','image','slug','user_id'];
-    // Relasi one to many POST ke Category
+    protected $fillable = ['title','category_id','image','content','download','video','slug','user_id','color'];
+
+    // Relasi one to many Source code ke category
     public function category()
     {
         return $this->belongsTo('App\Category');
     }
-    // Relasi many to many POST dan tag harus menggunakan table baru post_tag
+
+    // Relasi Many to Many SourceCode dan Tag menggunakan table sourcecode_tag
     public function tag()
     {
         return $this->belongsToMany('App\Tag');
     }
 
-    // Relasi one to many POST ke Table User
+    // Relasi one to many SourceCode dan user
     public function user()
     {
         return $this->belongsTo('App\User');

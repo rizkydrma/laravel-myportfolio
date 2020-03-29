@@ -11,8 +11,9 @@ Route::get('/blog', 'BlogsController@blog')->name('blog.blog');
 Route::get('/blog/{slug}', 'BlogsController@blog_detail')->name('blog.detail');
 Route::get('/list-category/{category}', 'BlogsController@list_category')->name('blog.category');
 
-
-Route::get('/source-code', 'SourcesController@index')->name('source-code');
+// Route Source
+Route::get('/source', 'SourcesController@index')->name('source');
+Route::get('/source/{slug}', 'SourcesController@source_detail')->name('source.detail');
 Route::get('/video-tutorial', 'BlogsController@tutorial')->name('blog.tutorial');
 
 Route::group(['middleware' => 'auth'], function(){
@@ -49,5 +50,13 @@ Route::group(['middleware' => 'auth'], function(){
     Route::delete('/user/kill/{id}','UsersController@kill')->name('user.kill');
     Route::get('/user/deleteAll','UsersController@deleteAll')->name('user.deleteAll');
     Route::resource('/user', 'UsersController');
+
+    //Route Source Code
+    Route::get('/sourcecode/search','SourcecodesController@search')->name('sourcecode.search');
+    Route::get('/sourcecode/trash','SourcecodesController@trash')->name('sourcecode.trash');
+    Route::get('/sourcecode/restore/{id}','SourcecodesController@restore')->name('sourcecode.restore');
+    Route::delete('/sourcecode/kill/{id},{image}','SourcecodesController@kill')->name('sourcecode.kill');
+    Route::get('/sourcecode/deleteAll','SourcecodesController@deleteAll')->name('sourcecode.deleteAll');
+    Route::resource('/sourcecode', 'SourcecodesController');
 });
 

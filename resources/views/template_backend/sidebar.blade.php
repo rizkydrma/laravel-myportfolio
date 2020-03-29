@@ -15,7 +15,12 @@
             active
         @endif
     "><a class="nav-link" href="{{ route('post.index') }}"><i class="fas fa-pen-alt"></i> <span>Post</span></a></li>
-      <li><a class="nav-link" href="blank.html"><i class="fas fa-code"></i> <span>Source Code</span></a></li>
+      <li class="
+        @if (session('active') == 'sourcecode')
+            active
+        @endif
+      "><a class="nav-link" href="{{ route('sourcecode.index') }}"><i class="fas fa-code"></i> <span>Source
+            Code</span></a></li>
       <li><a class="nav-link" href="blank.html"><i class="fas fa-video"></i> <span>Video Tutorial</span></a></li>
       <li class="
       @if (session('active') == 'category')

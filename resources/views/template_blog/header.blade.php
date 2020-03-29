@@ -34,7 +34,7 @@
         <div class="navbar-nav ml-auto">
           <a class="nav-item nav-link text-secondary" href="{{ route('blog') }}">HOME</a>
           <a class="nav-item nav-link text-secondary" href="{{ route('blog.blog') }}">BLOG</a>
-          <a class="nav-item nav-link text-secondary" href="{{ route('source-code') }}">SOURCE CODE</a>
+          <a class="nav-item nav-link text-secondary" href="{{ route('source') }}">SOURCE CODE</a>
           <a class="nav-item nav-link text-secondary" href="#">VIDEO TUTORIAL</a>
           <div class="bg-primary rounded-pill text-center" id="themeToggle">
             <a href="#" class="btn btn-light rounded-pill" id="modeLight">

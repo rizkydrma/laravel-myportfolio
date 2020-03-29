@@ -5,11 +5,11 @@
 @section('content')
 <div class="row">
   <div class="col">
-    <form action="{{ route('post.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('sourcecode.store') }}" method="POST" enctype="multipart/form-data">
       @csrf
       <div class="form-group">
-        <label>Judul</label>
-        <input type="text" class="form-control" name="title" placeholder="Enter new judul">
+        <label>Title</label>
+        <input type="text" class="form-control" name="title" placeholder="Enter new title">
         @error('title')
         <div class="invalid-feedback">
           {{ $message }}
@@ -53,6 +53,40 @@
       </div>
 
       <div class="form-group">
+        <label>Color</label>
+        <select class="form-control" name="color">
+          <option value="" holder>Choose Color</option>
+          <option value="bg-primary">Blue</option>
+          <option value="bg-success">Green</option>
+          <option value="bg-warning">Yellow</option>
+          <option value="bg-info">Light Blue</option>
+          <option value="bg-danger">Red</option>
+          <option value="bg-secondary">Grey</option>
+
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Link Download</label>
+        <input type="text" class="form-control" name="download" placeholder="Enter new download">
+        @error('download')
+        <div class="invalid-feedback">
+          {{ $message }}
+        </div>
+        @enderror
+      </div>
+
+      <div class="form-group">
+        <label>Link Video</label>
+        <input type="text" class="form-control" name="video" placeholder="Enter new video">
+        @error('video')
+        <div class="invalid-feedback">
+          {{ $message }}
+        </div>
+        @enderror
+      </div>
+
+      <div class="form-group">
         <label>Thumbnail</label>
         <input type="file" name="image" class="form-control">
         @error('image')
@@ -62,7 +96,7 @@
         @enderror
       </div>
 
-      <button class="btn btn-primary btn-block">Save Post</button>
+      <button class="btn btn-primary btn-block">Save Source</button>
     </form>
   </div>
 </div>

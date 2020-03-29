@@ -58,7 +58,7 @@ class PostsController extends Controller
 
         // simpan data image yang di upload ke variabel image
         $image = $request->file('image');
-        $imageName = time()."_".$image->getClientOriginalName();
+        $imageName = time()."post_".$image->getClientOriginalName();
         
         // path tujuan file/image akan di simpan 
         $path = 'img/post';
@@ -142,7 +142,7 @@ class PostsController extends Controller
                 'image' => 'required|file|image|mimes:jpeg,png,gif,webp|max:2048'
             ]);
             // deklarasi nama image baru
-            $imageNew = time()."_".$image->getClientOriginalName();
+            $imageNew = time()."post_".$image->getClientOriginalName();
             // pindahkan file/image yang di upload ke dalam folder path
             $image->move($path,$imageNew);
             // push data image ke dalam array postData agar tersimpan di DB
@@ -198,7 +198,7 @@ class PostsController extends Controller
     public function kill($id,$image)
     {
         
-        File::delete('data_post/'.$image);
+        File::delete('img/post/'.$image);
         Post::where('id', $id)->forceDelete();
 
         return redirect()->back()->with('status','Success Delete Some Data');

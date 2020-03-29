@@ -9,42 +9,19 @@
     <div class="row">
       <div class="col-lg-9">
         <div class="card-columns">
-          <div class="card bg-primary text-white">
-            <img src="{{asset('img/source/content-2.jpg')}}" class="card-img-top" alt="...">
+          @foreach ($sourcecodes as $item)
+
+          <div class="card {{ $item->color }} text-white">
+            <img src="{{asset('img/source/'.$item->image)}}" class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-              <button class="btn btn-danger btn-sm">Detail</button>
-              <p class="card-text"><small class="text-white">Last updated 3 mins ago</small></p>
+              <h5 class="card-title">{{ $item->title }}</h5>
+              <p class="card-text">{!! strip_tags((str_word_count($item->content) > 20 ?
+                substr($item->content,0,100)."..." : $item->content)) !!}</p>
+              <a href="{{ route('source.detail', $item->slug) }}" class="btn btn-danger btn-sm">Detail</a>
+              <p class="card-text"><small class="text-white">{{ $item->created_at->diffForHumans() }}</small></p>
             </div>
           </div>
-          <div class="card bg-primary text-white">
-            <img src="{{asset('img/source/content-2.jpg')}}" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-              <button class="btn btn-danger btn-sm">Detail</button>
-              <p class="card-text"><small class="text-white">Last updated 3 mins ago</small></p>
-            </div>
-          </div>
-          <div class="card bg-danger text-white">
-            <img src="{{asset('img/source/content-3.jpg')}}" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-              <button class="btn btn-danger btn-sm">Detail</button>
-              <p class="card-text"><small class="text-white">Last updated 3 mins ago</small></p>
-            </div>
-          </div>
-          <div class="card bg-warning text-white">
-            <img src="{{asset('img/source/content-1.jpg')}}" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-              <button class="btn btn-danger btn-sm">Detail</button>
-              <p class="card-text"><small class="text-white">Last updated 3 mins ago</small></p>
-            </div>
-          </div>
+          @endforeach
         </div>
       </div>
       @include('template_blog.widget')

@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
+    public function index()
+    {
+        return redirect()->back();
+    }
     /*
     |--------------------------------------------------------------------------
     | Register Controller
@@ -38,7 +42,8 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        return redirect()->back();
+        // $this->middleware('guest');
     }
 
     /**

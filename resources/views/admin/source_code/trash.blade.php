@@ -17,7 +17,7 @@
 
 <div class="card">
   <div class="card-header">
-    <h4>sourcecode Table</h4>
+    <h4>Sourcecode Table</h4>
     <div class="card-header-form">
       <form action="{{ route('sourcecode.search') }}" method="GET">
         <div class="input-group">
@@ -67,14 +67,15 @@
           </td>
           <td>
             <div class="d-inline d-flex">
-              <a href="{{ route('sourcecode.edit', $data->id) }}" class="btn btn-primary btn-action mr-1 show-modal"
-                title="Edit"><i class="fas fa-pencil-alt"></i></a>
+              <a href="{{ route('sourcecode.restore', $data->id) }}" class="btn btn-info mr-1" title="Restore"><i
+                  class="fas fa-undo"></i></a>
 
-              <form action="{{ route('sourcecode.destroy', $data->id) }}}" method="post" id="form-{{ $data->id }}">
+              <form action="{{ route('sourcecode.kill', ['id' => $data->id, 'image' => $data->image] )}}" method="post"
+                id="form-{{ $data->id }}">
                 @csrf
                 @method('delete')
-                <button type="submit" class="btn btn-danger btn-action btn-delete" title="Delete"
-                  data-id={{ $data->id }}><i class="fas fa-trash"></i></a>
+                <button type="submit" class="btn btn-danger btn-delete" title="Delete" data-id={{ $data->id }}><i
+                    class="fas fa-trash"></i></a>
 
               </form>
             </div>
