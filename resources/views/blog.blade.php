@@ -18,7 +18,7 @@
 <main>
   <div class="container">
     <div class="row">
-      <div class="col-lg-9">
+      <div class="col-lg-8 col-sm-12">
         <div class="content">
           <h4 class="text-secondary">Recent Post</h4>
           @foreach ($posts as $item)
@@ -37,9 +37,9 @@
                   <h6 class="card-subtitle text-warning" style="display: inline-block">
                     {{ $item->category->name }}</h6>
                   <span class="badge badge-warning rounded-pill">{{ $item->user->name }}</span>
-                  <p class="card-text text-secondary">
-                    {!! (str_word_count($item->content) > 60 ? substr($item->content,0,200)."..." : $item->content) !!}
-                  </p>
+                  <div class="text-secondary">
+                    {!! strip_tags((str_word_count($item->content) > 30 ? substr($item->content,0,150)."..." : $item->content)) !!}
+                  </div>
                   <p class="card-text">
                     <small class="text-muted text-secondary">{{ $item->created_at->diffForHumans() }}</small>
                   </p>

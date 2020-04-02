@@ -11,10 +11,10 @@ class Sourcecode extends Model
     protected $fillable = ['title','category_id','image','content','download','video','slug','user_id','color'];
 
     // Relasi one to many Source code ke category
-    public function category()
-    {
-        return $this->belongsTo('App\Category');
-    }
+    // public function category()
+    // {
+    //     return $this->belongsTo('App\Category');
+    // }
 
     // Relasi Many to Many SourceCode dan Tag menggunakan table sourcecode_tag
     public function tag()
@@ -26,5 +26,10 @@ class Sourcecode extends Model
     public function user()
     {
         return $this->belongsTo('App\User');
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
     }
 }

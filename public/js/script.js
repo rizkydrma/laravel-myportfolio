@@ -11,6 +11,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const storedNavbar = localStorage.getItem('navbar');
   const storedToggle = localStorage.getItem('toggle');
 
+  // get base url 
+  const indexCss = themeStylesheet.href.search('css');
+  const baseUrl = themeStylesheet.href.substring(0,indexCss);
 
   if(storedTheme){
     themeStylesheet.href = storedTheme;
@@ -20,14 +23,14 @@ document.addEventListener('DOMContentLoaded', () => {
   themeToggle.addEventListener('click', () => {
     // light -> dark
     if(themeStylesheet.href.includes('light')){
-      themeStylesheet.href = 'css/dark.css';
+      themeStylesheet.href = `${baseUrl}css/dark.css`;
       modeDark.classList.add(...classMode);
       modeLight.classList.remove(...classMode);
       navbar.classList.add('bg-dark');
       navbar.classList.remove('bg-light');
     }else{
       // dark -> light
-      themeStylesheet.href = 'css/light.css';
+      themeStylesheet.href = `${baseUrl}css/light.css`;
       modeLight.classList.add(...classMode);
       modeDark.classList.remove(...classMode);
       navbar.classList.remove('bg-dark');

@@ -37,7 +37,6 @@
             No
           </th>
           <th>Title</th>
-          <th>Category</th>
           <th>Tag</th>
           <th>Download</th>
           <th>Creator</th>
@@ -50,7 +49,6 @@
             {{ $item + $sourcecodes->firstitem() }}
           </td>
           <td>{{ $data->title }}</td>
-          <td>{{ $data->category->name }}</td>
           <td>
             @foreach ($data->tag as $item)
             <h6>

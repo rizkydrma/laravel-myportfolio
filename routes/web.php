@@ -10,10 +10,16 @@ Route::get('/blog/cari', 'BlogsController@search')->name('blog.search');
 Route::get('/blog', 'BlogsController@blog')->name('blog.blog');
 Route::get('/blog/{slug}', 'BlogsController@blog_detail')->name('blog.detail');
 Route::get('/list-category/{category}', 'BlogsController@list_category')->name('blog.category');
+Route::get('/list-tag/{tag}', 'BlogsController@list_tag')->name('blog.tag');
+
+Route::post('/blog/{post}/comment', 'PostCommentController@store')->name('blog.comment.store');
 
 // Route Source
+Route::get('/source/cari','SourcesController@search')->name('source.search');
 Route::get('/source', 'SourcesController@index')->name('source');
-Route::get('/source/{slug}', 'SourcesController@source_detail')->name('source.detail');
+Route::get('/list-source-category/{slug}', 'SourcesController@source_detail')->name('source.detail');
+Route::get('/list-source-tag/{tag}', 'SourcesController@list_tag')->name('source.tag');
+
 Route::get('/video-tutorial', 'BlogsController@tutorial')->name('blog.tutorial');
 
 Route::group(['middleware' => 'auth'], function(){
@@ -58,5 +64,18 @@ Route::group(['middleware' => 'auth'], function(){
     Route::delete('/sourcecode/kill/{id},{image}','SourcecodesController@kill')->name('sourcecode.kill');
     Route::get('/sourcecode/deleteAll','SourcecodesController@deleteAll')->name('sourcecode.deleteAll');
     Route::resource('/sourcecode', 'SourcecodesController');
+
+    // Route Bio
+    Route::get('/bio','BiosController@index')->name('bio.index');
+    Route::post('/bio/{bio}','BiosController@update')->name('bio.update');
+    
+    // Route Skill
+    Route::post('/skill', 'BiosController@store_skill')->name('skill.store');
+    Route::get('/skill/{skill}/edit', 'BiosController@edit_skill')->name('skill.edit');
+    Route::put('/skill/{skill}','BiosController@update_skill')->name('skill.update');
+    Route::delete('/skill/{skill}','BiosController@delete_skill')->name('skill.delete');
+
+    // Route Project
+    Route::resource('/project', 'ProjectsController');
 });
 

@@ -13,6 +13,16 @@ class Tag extends Model
     // Relasi many to many POST dan Category harus menggunakan table baru post_tag
     public function post()
     {
-        return $this->belongsToMany('App\Tag');
+        return $this->belongsToMany('App\Post');
+    }
+
+    public function sourcecode()
+    {
+        return $this->belongsToMany(Sourcecode::class);
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
     }
 }

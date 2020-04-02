@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Sourcecode;
-use App\Category;
 use App\Tag;
 use Auth;
 use Illuminate\Http\Request;
@@ -35,10 +34,9 @@ class SourcecodesController extends Controller
     public function create()
     {
         $title = 'Create Source Code Page';
-        $category = Category::all();
         $tags = Tag::all();
 
-        return view('admin.source_code.create', compact('title','category','tags'));
+        return view('admin.source_code.create', compact('title','tags'));
     }
 
     /**
@@ -50,8 +48,7 @@ class SourcecodesController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required|min:3',
-            'category_id' => 'required',
+            'title' => 'required|unique:sourcecodes|min:3',
             'content' => 'required',
             'image' => 'required|file|image|mimes:jpeg,png,gif,webp|max:2048',
             'color' => 'required'
@@ -67,7 +64,6 @@ class SourcecodesController extends Controller
         // simpan data ke database
         $sorcecodes = Sourcecode::create([
             'title' => $request->title,
-            'category_id' => $request->category_id,
             'content' => $request->content,
             'image' => $imageName,
             'download' => $request->download,
@@ -109,9 +105,8 @@ class SourcecodesController extends Controller
     {
         $title = 'Edit Source Code';
         $tags = Tag::all();
-        $category = Category::all();
 
-        return view('admin.source_code.edit', compact('title','tags','category','sourcecode'));
+        return view('admin.source_code.edit', compact('title','tags','sourcecode'));
     }
 
     /**
@@ -124,8 +119,7 @@ class SourcecodesController extends Controller
     public function update(Request $request, Sourcecode $sourcecode)
     {
         $request->validate([
-            'title' => 'required',
-            'category_id' => 'required',
+            'title' => 'required|unique:sourcecodes',
             'content' => 'required'
         ]);
 
@@ -136,7 +130,6 @@ class SourcecodesController extends Controller
 
         $sourceData = [
             'title' => $request->title,
-            'category_id' => $request->category_id,
             'content' => $request->content,
             'color' => $request->color,
             'download' => $request->download,

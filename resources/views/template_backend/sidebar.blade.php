@@ -8,7 +8,7 @@
     </div>
     <ul class="sidebar-menu">
       <li class="menu-header">Dashboard</li>
-      <li><a class="nav-link" href="blank.html"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
+      <li><a class="nav-link" href="{{ route('home') }}"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
       <li class="menu-header">Management Data</li>
       <li class="
         @if (session('active') == 'post')
@@ -41,6 +41,13 @@
           active
       @endif
       "><a class="nav-link" href="{{ route('user.index') }}"><i class="fas fa-user"></i> <span>User</span></a></li>
+      <li class="menu-header">Management Bio</li>
+      <li class="
+      @if (session('active') == 'bio')
+          active
+      @endif
+      "><a class="nav-link" href="{{ route('bio.index') }}"><i class="fas fa-user"></i> <span>Management Bio</span></a>
+      </li>
     </ul>
 
   </aside>

@@ -48,51 +48,15 @@
         <h4 class="card-subtitle mb-2 text-center text-primary bold">WHAT I DO</h4>
         <h2 class="card-title text-center text-secondary">SPECIALIZATION IN</h2>
         <div class="row p-2">
+          @foreach ($users->skill as $item)
           <div class="col-lg-6 col-sm-12">
-            <label class="text-secondary">HTML</label>
+          <label class="text-secondary">{{ $item->name }}</label>
             <div class="progress" style="height: 25px;">
-              <div class="progress-bar progress-bar-striped bg-secondary" role="progressbar" style="width: 80%;"
-                aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <label class="text-secondary">CSS</label>
-            <div class="progress" style="height: 25px;">
-              <div class="progress-bar progress-bar-striped bg-primary" role="progressbar" style="width: 75%"
-                aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <label class="text-secondary">Javascript</label>
-            <div class="progress" style="height: 25px;">
-              <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 65%"
-                aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <label class="text-secondary">PHP</label>
-            <div class="progress" style="height: 25px;">
-              <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 70%"
+            <div class="progress-bar progress-bar-striped {{ $item->color }}" role="progressbar" style="width: {{ $item->percentase }}%;"
                 aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
           </div>
-
-          <div class="col-lg-6 col-sm-12">
-            <label class="text-secondary">Code Igniter</label>
-            <div class="progress" style="height: 25px;">
-              <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 60%"
-                aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <label class="text-secondary">Laravel</label>
-            <div class="progress" style="height: 25px;">
-              <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 55%"
-                aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <label class="text-secondary">React Js</label>
-            <div class="progress" style="height: 25px;">
-              <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 45%"
-                aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <label class="text-secondary">Node Js</label>
-            <div class="progress" style="height: 25px;">
-              <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 35%"
-                aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
+          @endforeach
         </div>
       </div>
     </div>
@@ -111,11 +75,7 @@
       </div>
       <div class="col-lg-8 col-sm-12 p-5">
         <h2 class="text-primary bold">ABOUT ME</h2>
-        <h5 class="text-secondary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur enim
-          ducimus
-          necessitatibus, cupiditate atque totam blanditiis ea facilis temporibus tempore molestias
-          corrupti dolores
-          adipisci officia, harum in? Dolore, doloremque consequuntur.</h5>
+      <h5 class="text-secondary">{{ $users->bio->about }}</h5>
       </div>
     </div>
     <div class="row">
@@ -126,56 +86,21 @@
     </div>
 
     <div class="row justify-content-center">
-      <div class="col-lg-4 col-sm-12 card-deck">
-        <div class="card card-special bg-card">
-          <div class="card-body">
-            <h5 class="card-title text-primary">Nama Project</h5>
-            <h6 class="card-subtitle mb-2 text-muted text-secondary">Teknologi</h6>
-            <p class="card-text text-secondary">Lorem ipsum dolor sit amet consectetur, adipisicing
-              elit. Earum,
-              ipsum! Deleniti cupiditate saepe tempora id, quibusdam officia exercitationem. Molestiae
-              voluptatum unde
-              consequuntur natus adipisci fugiat modi eius, amet animi omnis!</p>
+      @foreach ($users->project()->limit(3)->get() as $item)
+        <div class="col-lg-4 col-sm-12 card-deck">
+          <div class="card card-special bg-card">
+            <div class="card-body">
+              <h5 class="card-title text-primary">{{$item->title}}</h5>
+              <h6 class="card-subtitle mb-2 text-muted text-secondary">{{$item->technology}}</h6>
+            <p class="card-text text-secondary">{{ $item->deskripsi }}</p>
+              </div>
+              <div class="card-footer">
+                <a href="#" class="card-link btn btn-primary btn-sm">Detail</a>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <a href="#" class="card-link btn btn-primary btn-sm">Detail</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-sm-12 card-deck">
-        <div class="card card-special bg-card">
-          <div class="card-body">
-            <h5 class="card-title text-primary">Nama Project</h5>
-            <h6 class="card-subtitle mb-2 text-muted text-secondary">Teknologi</h6>
-            <p class="card-text text-secondary">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Deleniti
-              error nam, possimus facilis rerum, perspiciatis cum voluptatem eos tempore ea modi
-              tenetur esse, at
-              sequi quod recusandae atque odio nulla.</p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="card-link btn btn-primary btn-sm">Detail</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-sm-12 card-deck">
-        <div class="card card-special bg-card">
-          <div class="card-body">
-            <h5 class="card-title text-primary">Nama Project</h5>
-            <h6 class="card-subtitle mb-2 text-muted text-secondary">Teknologi</h6>
-            <p class="card-text text-secondary">Detail project Lorem ipsum dolor sit amet consectetur
-              adipisicing
-              elit. Omnis ab
-              maxime repellat expedita blanditiis sapiente aliquam voluptas officia incidunt molestias
-              fugiat
-              temporibus, velit, eos, inventore doloribus exercitationem distinctio. Iure,
-              dignissimos.</p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="card-link btn btn-primary btn-sm">Detail</a>
-          </div>
-        </div>
-      </div>
+        @endforeach
+      
     </div>
 </section>
 <!-- About Me -->

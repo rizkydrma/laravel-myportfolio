@@ -50,7 +50,7 @@ class PostsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required|min:3',
+            'title' => 'required|unique:posts|min:3',
             'category_id' => 'required',
             'content' => 'required',
             'image' => 'required|file|image|mimes:jpeg,png,gif,webp|max:2048',
@@ -117,7 +117,7 @@ class PostsController extends Controller
     public function update(Request $request, Post $post)
     {
         $request->validate([
-            'title' => 'required',
+            'title' => 'required|min:3',
             'category_id' => 'required',
             'content' => 'required'
         ]);

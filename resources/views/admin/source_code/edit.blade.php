@@ -23,24 +23,6 @@
       </div>
 
       <div class="form-group">
-        <label>Category</label>
-        <select name="category_id" class="form-control">
-          <option value="" holder>Choose category</option>
-          @foreach ($category as $data)
-          <option value="{{ $data->id }}" @if ($data->id == $sourcecode->category_id)
-            selected
-            @endif
-            > {{ $data->name }} </option>
-          @endforeach
-        </select>
-        @error('category_id')
-        <div class="invalid-feedback">
-          {{ $message }}
-        </div>
-        @enderror
-      </div>
-
-      <div class="form-group">
         <label>Tags</label>
         <select class="form-control select2" multiple="" name="tags[]">
           @foreach ($tags as $tag)

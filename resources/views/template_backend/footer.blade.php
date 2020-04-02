@@ -27,6 +27,9 @@
 <script src="{{ asset('assets/modules/chocolat/dist/js/jquery.chocolat.min.js')}}"></script>
 <script src="{{ asset('assets/js/sweet/sweetalert2.all.min.js')}}"></script>
 <script src="{{ asset('assets/modules/select2/dist/js/select2.full.min.js')}}"></script>
+<script src="{{ asset('assets/modules/upload-preview/assets/js/jquery.uploadPreview.min.js')}}"></script>
+<script src="{{ asset('assets/modules/jquery-selectric/jquery.selectric.min.js')}}"></script>
+<script src="{{ asset('assets/js/page/features-post-create.js')}}"></script>
 
 <!-- Page Specific JS File -->
 <script src="{{ asset('assets/js/page/index.js')}}"></script>

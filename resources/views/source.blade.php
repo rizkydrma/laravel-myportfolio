@@ -7,10 +7,9 @@
   <div class="container">
     <h1 class="text-center text-secondary my-3">Source Code</h1>
     <div class="row">
-      <div class="col-lg-9">
+      <div class="col-lg-8 col-sm-12">
         <div class="card-columns">
           @foreach ($sourcecodes as $item)
-
           <div class="card {{ $item->color }} text-white">
             <img src="{{asset('img/source/'.$item->image)}}" class="card-img-top" alt="...">
             <div class="card-body">

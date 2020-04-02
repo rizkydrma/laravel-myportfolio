@@ -19,7 +19,7 @@
 
       <div class="form-group">
         <label>Category</label>
-        <select name="category_id" class="form-control">
+        <select name="category_id" class="form-control selectric">
           <option value="" holder>Choose category</option>
           @foreach ($category as $data)
           <option value="{{ $data->id }}"> {{ $data->name }} </option>
@@ -53,13 +53,13 @@
       </div>
 
       <div class="form-group">
-        <label>Thumbnail</label>
-        <input type="file" name="image" class="form-control">
-        @error('image')
-        <div class="invalid-feedback">
-          {{ $message }}
+        <label class="col-form-label">Thumbnail</label>
+        <div class="col-sm-12 col-md-7">
+          <div id="image-preview" class="image-preview">
+            <label for="image-upload" id="image-label">Choose File</label>
+            <input type="file" name="image" id="image-upload" />
+          </div>
         </div>
-        @enderror
       </div>
 
       <button class="btn btn-primary btn-block">Save Post</button>

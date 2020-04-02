@@ -70,9 +70,9 @@ class TagsController extends Controller
      * @param  \App\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tag $tag)
+    public function edit($id)
     {
-        $tags = Tag::findOrFail($tag->id);
+        $tags = Tag::findOrFail($id);
         echo json_encode($tags);
     }
 
