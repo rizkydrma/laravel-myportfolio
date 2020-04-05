@@ -38,7 +38,7 @@
           <a class="nav-item nav-link text-secondary" href="{{ route('blog') }}">HOME</a>
           <a class="nav-item nav-link text-secondary" href="{{ route('blog.blog') }}">BLOG</a>
           <a class="nav-item nav-link text-secondary" href="{{ route('source') }}">SOURCE CODE</a>
-          <a class="nav-item nav-link text-secondary" href="#">VIDEO TUTORIAL</a>
+        <a class="nav-item nav-link text-secondary" href="{{ route('video-tutorial.index') }}">VIDEO TUTORIAL</a>
           <div class="bg-primary rounded-pill text-center" id="themeToggle">
             <a href="#" class="btn btn-light rounded-pill" id="modeLight">
               <i class="fas fa-sun turn-off px-2 py-1"></i>

@@ -60,7 +60,11 @@
           <td>{{ $data->name }}</td>
 
           <td>{{ $data->slug }}</td>
-          <td>{{ $data->created_at->diffForHumans() }}</td>
+          <td>
+            @if (isset($data->created_at))
+            {{ $data->created_at->diffForHumans() }}
+            @endif
+          </td>
           <td>
             <div class="d-inline d-flex">
               <a class="btn btn-primary btn-action mr-1 show-modal" data-toggle="modal" data-target="#modalTagEdit"

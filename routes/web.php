@@ -22,7 +22,7 @@ Route::get('/list-source-tag/{tag}', 'SourcesController@list_tag')->name('source
 
 Route::post('/source/{sourcecode}/comment', 'PostCommentController@store_source')->name('source.comment.store');
 
-Route::get('/video-tutorial', 'BlogsController@tutorial')->name('blog.tutorial');
+Route::resource('/video-tutorial','VideosController');
 
 Route::group(['middleware' => 'auth'], function(){
     Route::get('/home', 'HomeController@index')->name('home');
@@ -67,6 +67,18 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/sourcecode/deleteAll','SourcecodesController@deleteAll')->name('sourcecode.deleteAll');
     Route::resource('/sourcecode', 'SourcecodesController');
 
+    // Route Commentar
+    Route::get('/post-comment/search','PostCommentController@search')->name('post-comment.search');
+    Route::get('/post-comment', 'PostCommentController@show_post')->name('post-comment.show');
+    Route::delete('/post-comment/{comment}', 'PostCommentController@destroy_post')->name('post-comment.destroy');
+    Route::get('/post-comment/deleteAll','PostCommentController@deleteAll')->name('post-comment.deleteAll');
+
+    Route::get('/source-comment/search','PostCommentController@search_source')->name('source-comment.search');
+    Route::get('/source-comment', 'PostCommentController@show_source')->name('source-comment.show');
+    Route::delete('/source-comment/{sourcecomment}', 'PostCommentController@destroy_source')->name('source-comment.destroy');
+    Route::get('/source-comment/deleteAll','PostCommentController@deleteAll_source')->name('source-comment.deleteAll');
+    
+
     // Route Bio
     Route::get('/bio','BiosController@index')->name('bio.index');
     Route::post('/bio/{bio}','BiosController@update')->name('bio.update');
@@ -79,5 +91,6 @@ Route::group(['middleware' => 'auth'], function(){
 
     // Route Project
     Route::resource('/project', 'ProjectsController');
+
 });
 

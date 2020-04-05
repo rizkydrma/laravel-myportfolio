@@ -49,7 +49,11 @@
             {{ $item + $posts->firstitem() }}
           </td>
           <td>{{ $data->title }}</td>
-          <td>{{ $data->category->name }}</td>
+          <td>
+            @if (isset($data->category))
+              {{ $data->category->name }}
+            @endif
+          </td>
           <td>
             <ul>
               @foreach ($data->tag as $item)

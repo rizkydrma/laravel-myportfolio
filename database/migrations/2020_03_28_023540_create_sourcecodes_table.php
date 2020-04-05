@@ -19,8 +19,8 @@ class CreateSourcecodesTable extends Migration
             $table->integer('category_id');
             $table->text('content');
             $table->string('image');
-            $table->string('video');
-            $table->string('download');
+            $table->string('video')->unsigned();
+            $table->string('download')->unsigned();
             $table->string('slug');
             $table->timestamps();
         });

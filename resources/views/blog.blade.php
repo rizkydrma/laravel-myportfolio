@@ -35,7 +35,9 @@
                     <h5 class="card-title text-primary">{{ $item->title }}</h5>
                   </a>
                   <h6 class="card-subtitle text-warning" style="display: inline-block">
-                    {{ $item->category->name }}</h6>
+                    @if (isset($item->category))
+                      {{ $item->category->name }}</h6>
+                    @endif
                   <span class="badge badge-warning rounded-pill">{{ $item->user->name }}</span>
                   <div class="text-secondary">
                     {!! strip_tags((str_word_count($item->content) > 30 ? substr($item->content,0,150)."..." : $item->content)) !!}

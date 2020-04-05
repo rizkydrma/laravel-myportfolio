@@ -8,7 +8,11 @@
     </div>
     <ul class="sidebar-menu">
       <li class="menu-header">Dashboard</li>
-      <li><a class="nav-link" href="{{ route('home') }}"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
+      <li class="
+        @if (session('active') == 'dashboard')
+            active
+        @endif
+      "><a class="nav-link" href="{{ route('home') }}"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
       <li class="menu-header">Management Data</li>
       <li class="
         @if (session('active') == 'post')
@@ -34,6 +38,17 @@
           active
       @endif
       "><a class="nav-link" href="{{ route('tag.index') }}"><i class="fas fa-gavel"></i> <span>Tag</span></a></li>
+      <li class="dropdown
+      @if (session('active') == 'comment')
+          active
+      @endif
+      ">
+        <a href="#" class="nav-link has-dropdown"><i class="fas fa-comments"></i><span>Comment</span></a>
+        <ul class="dropdown-menu">
+        <li><a class="nav-link" href="{{ route('post-comment.show') }}">Post Commentar</a></li>
+          <li class=><a class="nav-link" href="{{ route('source-comment.show') }}">Source Commentar</a></li>
+        </ul>
+      </li>
 
       <li class="menu-header">Management User</li>
       <li class="
@@ -48,6 +63,7 @@
       @endif
       "><a class="nav-link" href="{{ route('bio.index') }}"><i class="fas fa-user"></i> <span>Management Bio</span></a>
       </li>
+      
     </ul>
 
   </aside>
