@@ -35,6 +35,8 @@
 <script src="{{ asset('assets/modules/jquery.min.js')}}"></script>
 <script src="{{ asset('assets/modules/popper.js')}}"></script>
 <script src="{{ asset('assets/modules/bootstrap/js/bootstrap.min.js')}}"></script>
+<script src="{{ asset('assets/js/prism.js') }}"></script>
+
 
 <script src="{{ asset('js/script.js') }}"></script>
 </body>

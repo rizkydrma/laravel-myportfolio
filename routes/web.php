@@ -20,6 +20,8 @@ Route::get('/source', 'SourcesController@index')->name('source');
 Route::get('/list-source-category/{slug}', 'SourcesController@source_detail')->name('source.detail');
 Route::get('/list-source-tag/{tag}', 'SourcesController@list_tag')->name('source.tag');
 
+Route::post('/source/{sourcecode}/comment', 'PostCommentController@store_source')->name('source.comment.store');
+
 Route::get('/video-tutorial', 'BlogsController@tutorial')->name('blog.tutorial');
 
 Route::group(['middleware' => 'auth'], function(){

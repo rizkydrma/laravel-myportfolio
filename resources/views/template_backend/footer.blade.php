@@ -38,14 +38,26 @@
 <script src="{{ asset('assets/js/script.js')}}"></script>
 <script src="{{ asset('assets/js/scripts.js')}}"></script>
 <script src="{{ asset('assets/js/custom.js')}}"></script>
+<script src="{{ asset('assets/js/prism.js') }}"></script>
 
 <script src="https://cdn.ckeditor.com/ckeditor5/18.0.0/classic/ckeditor.js"></script>
 <script>
+  var options = {
+    filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
+    filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
+    filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
+    filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
+  };
+</script>
+<script>
   ClassicEditor
-      .create( document.querySelector( '#content' ) )
-      .catch( error => {
-          console.error( error );
-      } );
+          .create( document.querySelector( '#content' ))
+          .then( editor => {
+                  console.log( editor );
+          } )
+          .catch( error => {
+                  console.error( error );
+          } );
 </script>
 </body>
 

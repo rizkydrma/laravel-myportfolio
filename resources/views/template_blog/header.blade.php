@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" href="{{ asset('img/icon/rizky-darma.png') }}" />
   <title>Rizky Darma | @yield('title')</title>
   <!-- Bootstrap -->
   <link rel="stylesheet" href="{{ asset('assets/modules/bootstrap/css/bootstrap.min.css')}} ">
@@ -12,7 +13,9 @@
   <link rel="stylesheet" href="{{ asset('assets/modules/fontawesome/css/all.min.css') }} ">
   <!-- FONT -->
   <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
   <!-- Style CSS -->
   <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
   <link href="{{ asset('/css/light.css') }}" rel="stylesheet" id="theme">

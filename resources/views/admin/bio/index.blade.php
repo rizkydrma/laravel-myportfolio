@@ -15,7 +15,9 @@
         </div>
         <div class="card-body">
             @csrf
-            <textarea name="about" id="textAbout" cols="50" rows="5" class="" style="border: 0px" disabled>{{ $item->bio->about }}
+            <textarea name="about" id="textAbout" cols="50" rows="5" class="" style="border: 0px" disabled>@if ($item->about)
+              {{ $item->bio->about }}
+              @endif
             </textarea>
         </div>
       </form>

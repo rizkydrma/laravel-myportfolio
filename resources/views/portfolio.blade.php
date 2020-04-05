@@ -48,15 +48,17 @@
         <h4 class="card-subtitle mb-2 text-center text-primary bold">WHAT I DO</h4>
         <h2 class="card-title text-center text-secondary">SPECIALIZATION IN</h2>
         <div class="row p-2">
-          @foreach ($users->skill as $item)
-          <div class="col-lg-6 col-sm-12">
-          <label class="text-secondary">{{ $item->name }}</label>
-            <div class="progress" style="height: 25px;">
-            <div class="progress-bar progress-bar-striped {{ $item->color }}" role="progressbar" style="width: {{ $item->percentase }}%;"
-                aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+          @if (isset($users->skill))
+            @foreach ($users->skill as $item)
+            <div class="col-lg-6 col-sm-12">
+              <label class="text-secondary">{{ $item->name }}</label>
+              <div class="progress" style="height: 25px;">
+                <div class="progress-bar progress-bar-striped {{ $item->color }}" role="progressbar" style="width: {{ $item->percentase }}%;"
+                  aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
             </div>
-          </div>
-          @endforeach
+            @endforeach
+          @endif
         </div>
       </div>
     </div>
@@ -75,7 +77,9 @@
       </div>
       <div class="col-lg-8 col-sm-12 p-5">
         <h2 class="text-primary bold">ABOUT ME</h2>
-      <h5 class="text-secondary">{{ $users->bio->about }}</h5>
+        @if (isset($users->bio))
+        <h5 class="text-secondary">{{ $users->bio->about }}</h5>
+        @endif
       </div>
     </div>
     <div class="row">
@@ -86,21 +90,22 @@
     </div>
 
     <div class="row justify-content-center">
-      @foreach ($users->project()->limit(3)->get() as $item)
+      @if (isset($users->project))
+        @foreach ($users->project()->limit(3)->get() as $item)
         <div class="col-lg-4 col-sm-12 card-deck">
           <div class="card card-special bg-card">
             <div class="card-body">
               <h5 class="card-title text-primary">{{$item->title}}</h5>
               <h6 class="card-subtitle mb-2 text-muted text-secondary">{{$item->technology}}</h6>
-            <p class="card-text text-secondary">{{ $item->deskripsi }}</p>
-              </div>
-              <div class="card-footer">
-                <a href="#" class="card-link btn btn-primary btn-sm">Detail</a>
-              </div>
+              <p class="card-text text-secondary">{{ $item->deskripsi }}</p>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="card-link btn btn-primary btn-sm">Detail</a>
             </div>
           </div>
+        </div>
         @endforeach
-      
+      @endif
     </div>
 </section>
 <!-- About Me -->

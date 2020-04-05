@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
   <title>Rizky Darma | Dashboard - @yield('title') </title>
+  <link rel="shortcut icon" href="{{ asset('img/icon/rizky-darma.png') }}" />
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="{{ asset('assets/modules/bootstrap/css/bootstrap.min.css')}} ">
@@ -17,6 +18,7 @@
   <link rel="stylesheet" href="{{ asset('assets/modules/owlcarousel2/dist/assets/owl.theme.default.min.css')}}">
   <link rel="stylesheet" href="{{ asset('assets/modules/select2/dist/css/select2.min.css')}}">
   <link rel="stylesheet" href="{{ asset('assets/modules/jquery-selectric/selectric.css')}}">
+  <link rel="stylesheet" href="{{ asset('assets/css/prism.css') }}">
 
   <!-- Template CSS -->
   <link rel="stylesheet" href="{{ asset('assets/css/style.css')}}">

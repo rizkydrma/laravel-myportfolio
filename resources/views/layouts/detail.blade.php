@@ -42,8 +42,8 @@
         </div>
 
         {{-- other Post --}}
-        <div class="row justify-content-between mt-5">
-          <div class="col-lg-4 col-sm-12">
+        <div class="row justify-content-between mt-2 mb-3">
+          <div class="col-lg-5 col-sm-12">
             @if ($previous)
             <div class="card bg-card direct-content">
               <div class="card-body">
@@ -62,7 +62,7 @@
 
           </div>
           @if ($next)
-          <div class="col-lg-4 col-sm-12">
+          <div class="col-lg-5 col-sm-12">
             <div class="card bg-card direct-content">
               <div class="card-body">
                 <p class="text-secondary">{{ $next->title }}</p>
@@ -80,10 +80,13 @@
           @endif
 
         </div>
-
         {{-- Comments --}}
         <div class="bg-card p-4">
+          @if (preg_match("/post/i", $item->image))
         <form action="{{ route('blog.comment.store', $item) }}" method="post">
+          @else
+          <form action="{{ route('source.comment.store', $item) }}" method="post">
+            @endif
           {{ csrf_field() }}
           <label for="comment" class="text-secondary">Leave a Comment</label>
             <div class="row">

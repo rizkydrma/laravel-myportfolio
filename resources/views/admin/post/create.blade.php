@@ -44,7 +44,9 @@
       <div class="form-group">
         <label>Content</label>
         <textarea name="content" class="form-control" cols="30" rows="10" placeholder="Enter a content"
-          id="content"></textarea>
+          id="content">
+          {{ old('content')}}
+        </textarea>
         @error('content')
         <div class="invalid-feedback">
           {{ $message }}
