@@ -22,6 +22,7 @@ Route::get('/list-source-tag/{tag}', 'SourcesController@list_tag')->name('source
 
 Route::post('/source/{sourcecode}/comment', 'PostCommentController@store_source')->name('source.comment.store');
 
+Route::get('/video-tutorial','HomeController@video')->name('video-tutorial.index');
 
 
 Route::group(['middleware' => 'auth'], function(){

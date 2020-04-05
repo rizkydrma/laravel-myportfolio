@@ -41,4 +41,11 @@ class HomeController extends Controller
         session(['active' => 'dashboard']);
         return view('home', compact('users','posts','sourcecodes','comments','sourcecomment','tags','categories'));
     }
+
+    public function video()
+    {
+        $title = 'Video Tutorial';
+
+        return view('under-construction', compact('title'));
+    }
 }

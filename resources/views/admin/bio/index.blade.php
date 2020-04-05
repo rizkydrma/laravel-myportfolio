@@ -90,6 +90,10 @@
         <td>{{ $data->technology }}</td>
         <td>{{ $data->deskripsi }}</td>
         <td>
+          <img src="{{ asset('/img/project/'.$data->image) }}" alt="gambar {{ $data->id }}"
+              class="img-fluid img-thumbnail" style="width: 7rem;">
+        </td>
+        <td>
           <div class="d-inline d-flex">
             <a href="" class="btn btn-primary btn-action mr-1 edit-project" data-id={{ $data->id }}
               data-toggle="modal" data-target="#editProject"
@@ -189,12 +193,12 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="addProjectLabel">Modal title</h5>
+        <h5 class="modal-title" id="addProjectLabel">Add a Project</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="{{ route('project.store') }}" method="POST">
+      <form action="{{ route('project.store') }}" method="POST" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="modal-body">
           <div class="form-group">
@@ -243,7 +247,17 @@
             </div>
             @enderror
           </div>
-          
+
+          <div class="form-group">
+            <label class="col-form-label">Thumbnail</label>
+            <div class="col-sm-12 col-md-7">
+              <div id="image-preview" class="image-preview">
+                <label for="image-upload" id="image-label">Choose File</label>
+                <input type="file" name="image" id="image-upload" />
+              </div>
+            </div>
+          </div>
+
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -264,7 +278,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="{{ route('project.store') }}" method="POST" id="form-project">
+      <form action="{{ route('project.store') }}" method="POST" id="form-project" enctype="multipart/form-data">
         {{ csrf_field() }}
         @method('put')
         <div class="modal-body" id="body-project">
@@ -413,6 +427,16 @@ function showDetailProject(data){
               {{ $message }}
             </div>
             @enderror
+          </div>
+
+          <div class="form-group">
+            <label class="col-form-label">Thumbnail</label>
+            <div class="col-sm-12 col-md-7">
+              <div id="image-preview" class="image-preview">
+                <label for="image-upload" id="image-label">Choose File</label>
+                <input type="file" name="image" id="image-upload" />
+              </div>
+            </div>
           </div>
           
         </div>
