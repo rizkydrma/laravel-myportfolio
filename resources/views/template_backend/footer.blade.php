@@ -50,7 +50,9 @@
   };
 </script>
 <script>
-  ClassicEditor
+  const ckEditor = document.getElementById('content');
+  if(ckEditor){
+    ClassicEditor
           .create( document.querySelector( '#content' ))
           .then( editor => {
                   console.log( editor );
@@ -58,6 +60,8 @@
           .catch( error => {
                   console.error( error );
           } );
+  }
+  
 </script>
 </body>
 

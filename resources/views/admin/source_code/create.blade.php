@@ -72,13 +72,13 @@
       </div>
 
       <div class="form-group">
-        <label>Thumbnail</label>
-        <input type="file" name="image" class="form-control">
-        @error('image')
-        <div class="invalid-feedback">
-          {{ $message }}
+        <label class="col-form-label">Thumbnail</label>
+        <div class="col-sm-12 col-md-7">
+          <div id="image-preview" class="image-preview">
+            <label for="image-upload" id="image-label">Choose File</label>
+            <input type="file" name="image" id="image-upload" />
+          </div>
         </div>
-        @enderror
       </div>
 
       <button class="btn btn-primary btn-block">Save Source</button>

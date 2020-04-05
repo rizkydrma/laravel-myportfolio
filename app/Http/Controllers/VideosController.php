@@ -14,7 +14,9 @@ class VideosController extends Controller
     public function index()
     {
         $title = 'Video Tutorial';
-        return view('under-construction', compact('title'));
+
+        session(['active' => 'video']);
+        return view('admin.video.index', compact('title'));
     }
 
     /**

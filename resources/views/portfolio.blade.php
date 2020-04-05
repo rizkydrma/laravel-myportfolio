@@ -78,7 +78,7 @@
       <div class="col-lg-8 col-sm-12 p-5">
         <h2 class="text-primary bold">ABOUT ME</h2>
         @if (isset($users->bio))
-        <h5 class="text-secondary">{{ $users->bio->about }}</h5>
+        <h5 class="text-secondary">{!! $users->bio->about !!}</h5>
         @endif
       </div>
     </div>

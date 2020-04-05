@@ -50,7 +50,11 @@
             {{ $item + $sourcecodes->firstitem() }}
           </td>
           <td>{{ $data->title }}</td>
-          <td>{{ $data->category->name }}</td>
+          <td>
+            @if (isset($data->category))
+              {{ $data->category->name }}
+              @endif
+            </td>
           <td>
             @foreach ($data->tag as $item)
             <h6>

@@ -164,9 +164,9 @@ class SourcecodesController extends Controller
      * @param  \App\Sourcecode  $sourcecode
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Sourcecode $sourcecode)
+    public function destroy($id)
     {
-        Sourcecode::destroy($sourcecode->id);
+        Sourcecode::destroy($id);
         return redirect()->back()->with('status','Success delete some data');
     }
 

@@ -46,7 +46,11 @@
       <tr>
         <td>{{ $post + $posts->firstitem() }}</td>
         <td>{{ $data->title }}</td>
-        <td>{{ $data->category->name}}</td>
+        <td>
+          @if (isset($data->category))
+            {{ $data->category->name}}
+          @endif
+        </td>
         <td>
           <ul>
             @foreach ($data->tag as $item)
@@ -57,7 +61,7 @@
           </ul>
         </td>
         <td>
-          <img src="{{ asset('/data_post/'.$data->image) }}" class="img-fluid img-thumbnail" style="width: 5rem">
+          <img src="{{ asset('/img/post/'.$data->image) }}" class="img-fluid img-thumbnail" style="width: 5rem">
         </td>
         <td>
           <div class="d-inline-flex">

@@ -68,7 +68,7 @@
               <a href="{{ route('sourcecode.edit', $data->id) }}" class="btn btn-primary btn-action mr-1 show-modal"
                 title="Edit"><i class="fas fa-pencil-alt"></i></a>
 
-              <form action="{{ route('sourcecode.destroy', $data->id) }}}" method="post" id="form-{{ $data->id }}">
+              <form action="{{ route('sourcecode.destroy', $data->id) }}" method="post" id="form-{{ $data->id }}">
                 @csrf
                 @method('delete')
                 <button type="submit" class="btn btn-danger btn-action btn-delete" title="Delete"

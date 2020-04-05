@@ -5,21 +5,24 @@
 @section('content')
 <div class="row">
   @foreach ($user as $item)
+  
   <div class="col-lg-6 col-sm-12">
     <div class="card">
-    <form action="{{ route('bio.update', $item->id) }}" method="POST">
+    <form action="{{ route('bio.update', $item->bio->id) }}" method="POST">
+      {{ csrf_field() }}
+      @method('put')
         <div class="card-header">
           <h4>About Me</h4>
           <button type="button" class="btn btn-primary btn-sm mr-2" id="edit-about">Edit About </button>
           <button type="submit" class="btn btn-success btn-sm" id="save-about" hidden>Save About </button>
         </div>
         <div class="card-body">
-            @csrf
-            <textarea name="about" id="textAbout" cols="50" rows="5" class="" style="border: 0px" disabled>@if ($item->about)
+            <textarea id="content" name="about" cols="50" rows="5" class="" style="border: 0px" disabled>@if ($item->bio)
               {{ $item->bio->about }}
               @endif
             </textarea>
         </div>
+
       </form>
     </div>
   </div>
@@ -285,11 +288,10 @@ const addSkill = document.getElementById('add-skill');
 const editSkill = document.querySelectorAll('.edit-skill');
 
 const saveAbout = document.getElementById('save-about');
-const textAbout = document.getElementById('textAbout');
+const content = document.getElementById('content');
 
 editAbout.addEventListener('click', function(e){
-  e.preventDefault();
-  textAbout.disabled = (textAbout.disabled) ? false : true;
+  content.disabled = (content.disabled) ? false : true;
   saveAbout.hidden = (saveAbout.hidden) ? false : true ;
 })
 

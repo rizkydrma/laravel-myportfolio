@@ -22,7 +22,7 @@ Route::get('/list-source-tag/{tag}', 'SourcesController@list_tag')->name('source
 
 Route::post('/source/{sourcecode}/comment', 'PostCommentController@store_source')->name('source.comment.store');
 
-Route::resource('/video-tutorial','VideosController');
+
 
 Route::group(['middleware' => 'auth'], function(){
     Route::get('/home', 'HomeController@index')->name('home');
@@ -67,6 +67,10 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/sourcecode/deleteAll','SourcecodesController@deleteAll')->name('sourcecode.deleteAll');
     Route::resource('/sourcecode', 'SourcecodesController');
 
+    // Route Video TUtorial
+    Route::resource('/video','VideosController');
+
+
     // Route Commentar
     Route::get('/post-comment/search','PostCommentController@search')->name('post-comment.search');
     Route::get('/post-comment', 'PostCommentController@show_post')->name('post-comment.show');
@@ -81,7 +85,7 @@ Route::group(['middleware' => 'auth'], function(){
 
     // Route Bio
     Route::get('/bio','BiosController@index')->name('bio.index');
-    Route::post('/bio/{bio}','BiosController@update')->name('bio.update');
+    Route::put('/bio/{bio}','BiosController@update')->name('bio.update');
     
     // Route Skill
     Route::post('/skill', 'BiosController@store_skill')->name('skill.store');
