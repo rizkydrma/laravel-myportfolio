@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
-Auth::routes();
+Auth::routes([
+    'register' => false
+]);
 Route::get('/', 'BlogsController@index')->name('blog');
 
 // Route BLOG
