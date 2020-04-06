@@ -312,7 +312,7 @@ editAbout.addEventListener('click', function(e){
 editSkill.forEach(btn => {
   btn.addEventListener('click', function(){
     const id = this.dataset.id;
-    let url = `http://localhost:8000/skill/${id}/edit`;
+    let url = `http://rizkydarma.herokuapp.com/skill/${id}/edit`;
     getDataSkill(url);
   })
 })
@@ -362,7 +362,7 @@ editProject.forEach(btn => {
   btn.addEventListener('click', function(e){
     e.preventDefault();
     const id = this.dataset.id;
-    let url = `http://localhost:8000/project/${id}/edit`;
+    let url = `http://rizkydarma.herokuapp.com/project/${id}/edit`;
     getDataProject(url);
   })
 })

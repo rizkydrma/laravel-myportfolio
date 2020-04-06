@@ -13,20 +13,20 @@ document.addEventListener("DOMContentLoaded", () => {
         if (flashdata.includes("Success")) {
             Swal.fire({
                 type: "success",
-                text: flashdata
+                text: flashdata,
             });
         } else {
             Swal.fire({
                 type: "error",
-                text: flashdata
+                text: flashdata,
             });
         }
     }
 
     // DELETE
     const btnDeletes = document.querySelectorAll(".btn-delete");
-    btnDeletes.forEach(btnDelete => {
-        btnDelete.addEventListener("click", function(e) {
+    btnDeletes.forEach((btnDelete) => {
+        btnDelete.addEventListener("click", function (e) {
             e.preventDefault();
             let href = this.dataset.id;
             Swal.fire({
@@ -36,8 +36,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",
                 cancelButtonColor: "#d33",
-                confirmButtonText: "Ya, Hapus!"
-            }).then(result => {
+                confirmButtonText: "Ya, Hapus!",
+            }).then((result) => {
                 if (result.value) {
                     let form = document.getElementById(`form-${href}`);
                     form.submit();
@@ -56,17 +56,17 @@ document.addEventListener("DOMContentLoaded", () => {
     ) {
         const checkAll = document.getElementById("checkbox-all");
         const checkbox = document.querySelectorAll(".sub-check");
-        checkAll.addEventListener("click", function() {
-            checkbox.forEach(check =>
+        checkAll.addEventListener("click", function () {
+            checkbox.forEach((check) =>
                 check.checked == true
                     ? (check.checked = false)
                     : (check.checked = true)
             );
         });
         const btnDeleteAll = document.getElementById("btn-deleteAll");
-        btnDeleteAll.addEventListener("click", function() {
+        btnDeleteAll.addEventListener("click", function () {
             const id = [];
-            checkbox.forEach(check => {
+            checkbox.forEach((check) => {
                 // jika checkbox true push data ke dalam array
                 if (check.checked == true) {
                     id.push(check.dataset.id);
@@ -114,12 +114,12 @@ document.addEventListener("DOMContentLoaded", () => {
             url: `/${route}/deleteAll`,
             method: "get",
             data: {
-                id: checkSelected
+                id: checkSelected,
             },
-            success: function() {
+            success: function () {
                 // jika sucsess reload halaman
                 window.location.reload();
-            }
+            },
         });
     }
     const showModals = document.querySelectorAll(".show-modal");
@@ -127,19 +127,19 @@ document.addEventListener("DOMContentLoaded", () => {
     // REUSABLE FUNGSI FETCH DATA
     // FETCH DATA SESUAI URL YANG DIBLEMPAR
     if (title.includes("tag")) {
-        showModals.forEach(btn => {
-            btn.addEventListener("click", function() {
+        showModals.forEach((btn) => {
+            btn.addEventListener("click", function () {
                 const id = this.dataset.id;
-                let url = `http://localhost:8000/tag/${id}/edit`;
+                let url = `http://rizkydarma.herokuapp.com/tag/${id}/edit`;
                 let route = "tag";
                 fetchData(url, route);
             });
         });
     } else {
-        showModals.forEach(btn => {
-            btn.addEventListener("click", function() {
+        showModals.forEach((btn) => {
+            btn.addEventListener("click", function () {
                 const id = this.dataset.id;
-                let url = `http://localhost:8000/category/${id}/edit`;
+                let url = `http://rizkydarma.herokuapp.com/category/${id}/edit`;
                 let route = "category";
                 fetchData(url, route);
             });
@@ -148,8 +148,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function fetchData(url, route) {
         fetch(url)
-            .then(response => response.json())
-            .then(response => {
+            .then((response) => response.json())
+            .then((response) => {
                 const categoryDetail = showDetailCategory(response);
                 const modalBody = document.querySelector(".bungkus");
                 modalBody.innerHTML = categoryDetail;
