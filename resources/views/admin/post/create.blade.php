@@ -53,7 +53,7 @@
           </textarea>
         </div>
         <div class="manual">
-        <textarea name="content" id="manual" class="form-control" cols="100" rows="15">{{ old('content') }}</textarea>
+        <textarea name="content"  cols="120" rows="25">{{ old('content') }}</textarea>
         </div>
         @error('content')
         <div class="invalid-feedback">

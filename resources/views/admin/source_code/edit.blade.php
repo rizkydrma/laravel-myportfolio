@@ -44,7 +44,7 @@
           id="content">{{ $sourcecode->content }}</textarea>
         </div>
         <div class="manual">
-          <textarea name="content" id="manual"  cols="100" rows="15">{{ $sourcecode->content }}</textarea>
+          <textarea name="content" cols="120" rows="25">{{ $sourcecode->content }}</textarea>
         </div>
         @error('content')
         <div class="invalid-feedback">
