@@ -19,10 +19,13 @@
   <link rel="stylesheet" href="{{ asset('assets/modules/select2/dist/css/select2.min.css')}}">
   <link rel="stylesheet" href="{{ asset('assets/modules/jquery-selectric/selectric.css')}}">
   <link rel="stylesheet" href="{{ asset('assets/css/prism.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css">
 
   <!-- Template CSS -->
   <link rel="stylesheet" href="{{ asset('assets/css/style.css')}}">
   <link rel="stylesheet" href="{{ asset('assets/css/components.css')}}">
+
+  <script src="https://rawgit.com/jackmoore/autosize/master/dist/autosize.min.js"></script>
 
 
   <meta name="csrf-token" content="{{ csrf_token() }}">

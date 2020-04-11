@@ -31,6 +31,7 @@
 <script src="{{ asset('assets/modules/jquery-selectric/jquery.selectric.min.js')}}"></script>
 <script src="{{ asset('assets/js/page/features-post-create.js')}}"></script>
 
+
 <!-- Page Specific JS File -->
 <script src="{{ asset('assets/js/page/index.js')}}"></script>
 
@@ -39,6 +40,8 @@
 <script src="{{ asset('assets/js/scripts.js')}}"></script>
 <script src="{{ asset('assets/js/custom.js')}}"></script>
 <script src="{{ asset('assets/js/prism.js') }}"></script>
+<script src="{{ asset('js/highlight.pack.js') }}"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 
 <script src="https://cdn.ckeditor.com/ckeditor5/18.0.0/classic/ckeditor.js"></script>
 <script>
@@ -61,6 +64,32 @@
                   console.error( error );
           } );
   }
+  
+</script>
+
+<script>
+  const typeEditor = document.getElementById('typeEditor')
+  const textCKEditor = document.querySelector('.ckeditor')
+  const textManual = document.querySelector('.manual')
+
+ autosize(document.getElementById('manual'))
+  textCKEditor.hidden = true
+  typeEditor.innerHTML = 'Use CK Editor'
+
+
+typeEditor.addEventListener('click', ()=>{
+  if(typeEditor.textContent == 'Use Manual Editor'){
+    textCKEditor.hidden = true
+    textManual.hidden = false
+    typeEditor.innerHTML = 'Use CK Editor'
+  }else{
+    textCKEditor.hidden = false
+    textManual.hidden = true
+    typeEditor.innerHTML = 'Use Manual Editor'
+
+  }
+
+})
   
 </script>
 </body>

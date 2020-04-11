@@ -28,10 +28,10 @@ class Sourcecode extends Model
         return $this->belongsTo('App\User');
     }
 
-    public function getRouteKeyName()
-    {
-        return 'slug';
-    }
+    // public function getRouteKeyName()
+    // {
+    //     return 'slug';
+    // }
 
     public function comments()
     {

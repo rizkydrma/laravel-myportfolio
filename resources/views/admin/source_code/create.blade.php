@@ -27,9 +27,19 @@
       </div>
 
       <div class="form-group">
-        <label>Content</label>
-        <textarea name="content" class="form-control" cols="30" rows="10" placeholder="Enter a content"
-          id="content"></textarea>
+        <div class="d-flex mb-2">
+          <label>Content</label>
+          <button class="btn btn-primary btn-sm ml-2" type="button" id="typeEditor">Use Manual Editor</button>
+        </div>
+        <div class="ckeditor">
+          <textarea name="content" class="form-control" cols="30" rows="10" placeholder="Enter a content"
+            id="content">
+            {{ old('content')}}
+          </textarea>
+        </div>
+        <div class="manual">
+        <textarea name="content" id="manual" class="form-control" cols="150" rows="25" style="height: 200px">{{ old('content') }}</textarea>
+        </div>
         @error('content')
         <div class="invalid-feedback">
           {{ $message }}
@@ -85,6 +95,7 @@
     </form>
   </div>
 </div>
+
 
 
 @endsection

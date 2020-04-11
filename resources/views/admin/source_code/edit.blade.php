@@ -38,9 +38,14 @@
 
       <div class="form-group">
         <label>Content</label>
-        <textarea name="content" class="form-control" cols="30" rows="10" placeholder="Enter a content" id="content">
-          {{ $sourcecode->content }}
-        </textarea>
+        <button class="btn btn-primary btn-sm ml-2" type="button" id="typeEditor">Use Manual Editor</button>
+        <div class="ckeditor">
+          <textarea name="content" class="form-control" cols="30" rows="10" placeholder="Enter a content"
+          id="content">{{ $sourcecode->content }}</textarea>
+        </div>
+        <div class="manual">
+          <textarea name="content" id="manual"  cols="100" rows="15">{{ $sourcecode->content }}</textarea>
+        </div>
         @error('content')
         <div class="invalid-feedback">
           {{ $message }}
@@ -101,5 +106,29 @@
   </div>
 </div>
 
+<script>
+  const typeEditor = document.getElementById('typeEditor')
+  const textCKEditor = document.querySelector('.ckeditor')
+  const textManual = document.querySelector('.manual')
+
+  textCKEditor.hidden = true
+  typeEditor.innerHTML = 'Use CK Editor'
+
+
+typeEditor.addEventListener('click', ()=>{
+  if(typeEditor.textContent == 'Use Manual Editor'){
+    textCKEditor.hidden = true
+    textManual.hidden = false
+    typeEditor.innerHTML = 'Use CK Editor'
+  }else{
+    textCKEditor.hidden = false
+    textManual.hidden = true
+    typeEditor.innerHTML = 'Use Manual Editor'
+
+  }
+
+})
+  
+</script>
 
 @endsection

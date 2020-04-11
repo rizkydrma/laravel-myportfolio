@@ -53,9 +53,15 @@
 
       <div class="form-group">
         <label>Content</label>
-        <textarea name="content" class="form-control" cols="30" rows="10" placeholder="Enter a content"
+        <button class="btn btn-primary btn-sm ml-2" type="button" id="typeEditor">Use Manual Editor</button>
+        <div class="ckeditor">
+          <textarea name="content" class="form-control" cols="30" rows="10" placeholder="Enter a content"
           id="content">{{ $post->content }}</textarea>
-        @error('content')
+        </div>
+        <div class="manual">
+          <textarea name="content" id="manual" cols="100" rows="35">{{ $post->content }}</textarea>
+        </div>
+          @error('content')
         <div class="invalid-feedback">
           {{ $message }}
         </div>
@@ -76,4 +82,5 @@
     </form>
   </div>
 </div>
+
 @endsection
