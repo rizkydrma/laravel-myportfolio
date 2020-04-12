@@ -69,27 +69,21 @@
 
 <script>
   const typeEditor = document.getElementById('typeEditor')
-  const textCKEditor = document.querySelector('.ckeditor')
-  const textManual = document.querySelector('.manual')
+  const editor = document.querySelector('.editor')
+  
 
- autosize(document.getElementById('manual'))
-  textCKEditor.hidden = true
-  typeEditor.innerHTML = 'Use CK Editor'
-
-
-typeEditor.addEventListener('click', ()=>{
-  if(typeEditor.textContent == 'Use Manual Editor'){
-    textCKEditor.hidden = true
-    textManual.hidden = false
-    typeEditor.innerHTML = 'Use CK Editor'
-  }else{
-    textCKEditor.hidden = false
-    textManual.hidden = true
+  typeEditor.addEventListener('click', () => {
+    if(typeEditor.innerHTML == 'Use CK Editor'){
+    window.location.reload()
     typeEditor.innerHTML = 'Use Manual Editor'
-
+  }else{
+    editor.innerHTML = `
+      <textarea name="content"  cols="120" rows="25">{{ old('content') }}</textarea>
+    `;
+    typeEditor.innerHTML = 'Use CK Editor'
   }
-
-})
+  })
+  
   
 </script>
 </body>

@@ -46,14 +46,11 @@
           <label>Content</label>
           <button class="btn btn-primary btn-sm ml-2" type="button" id="typeEditor">Use Manual Editor</button>
         </div>
-        <div class="ckeditor">
+        <div class="editor">
           <textarea name="content" class="form-control" cols="30" rows="10" placeholder="Enter a content"
             id="content">
             {{ old('content')}}
           </textarea>
-        </div>
-        <div class="manual">
-        <textarea name="content"  cols="120" rows="25">{{ old('content') }}</textarea>
         </div>
         @error('content')
         <div class="invalid-feedback">
